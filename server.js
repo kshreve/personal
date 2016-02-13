@@ -1,5 +1,4 @@
 import express from 'express';
-import session from 'express-session';
 import path from 'path';
 import open from 'open';
 import routeCache from 'route-cache';
@@ -11,26 +10,24 @@ import fs from 'fs';
 import configureStore from './js/redux/configureStore.jsx';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import connectLiveReload from 'connect-livereload';
 
 let app = express();
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-if (process.env.NODE_ENV !== 'production') {
-    app.use(connectLiveReload());
-    let config = require('./webpack.config'),
+if(process.env.NODE_ENV !== 'production') {
+    let config   = require('./webpack.config'),
         compiler = webpack(config);
 
     app.use(webpackDevMiddleware(compiler, {
-        noInfo:     true,
+        noInfo: true,
         publicPath: config.output.publicPath
     }));
 
     app.use(webpackHotMiddleware(compiler));
 }
 
-app.get('/*', routeCache.cacheSeconds(3600), function (req, res, next) {
+app.get('/*', routeCache.cacheSeconds(3600), (req, res, next) => {
     let script = process.env.NODE_ENV !== 'production' ? '/dist/bundle.js' : '/bundle.min.js';
 
     // create new store and initialize
@@ -61,7 +58,7 @@ app.get('/*', routeCache.cacheSeconds(3600), function (req, res, next) {
     `);
 });
 
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     console.error(err.stack);
     next(err);
 });

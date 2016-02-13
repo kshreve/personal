@@ -7,7 +7,7 @@ class BaseComponent extends Component {
 
         // Auto-magically bind this to each method call.
         Object.getOwnPropertyNames(Object.getPrototypeOf(this)).forEach((method) => {
-            if (typeof this[method] !== 'function') {
+            if(typeof this[method] !== 'function') {
                 return;
             }
             this[method] = this[method].bind(this);

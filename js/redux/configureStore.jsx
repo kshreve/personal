@@ -8,13 +8,14 @@ const createStoreWithMiddleware = compose(
     applyMiddleware(
         thunk,// lets us dispatch() functions
         logger
-    )
+    ),
+    typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
 )(createStore);
 
 export default function configureStore(initialState) {
     const store = createStoreWithMiddleware(rootReducer, initialState);
 
-    if (module.hot) {
+    if(module.hot) {
         // Enable Webpack hot module replacement for reducers
         module.hot.accept('./rootReducer.jsx', () => {
             const nextRootReducer = require('./rootReducer.jsx');

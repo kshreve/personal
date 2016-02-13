@@ -1,26 +1,29 @@
-var path = require('path'),
+var path    = require('path'),
     webpack = require('webpack'),
-    config = {
-        entry:   [
+    config  = {
+        entry: [
             'webpack-hot-middleware/client?reload=true',
             './js/client.jsx'],
-        output:  {
-            path:       path.join(__dirname, 'dist'),
-            filename:   'bundle.js',
+        output: {
+            path: path.join(__dirname, 'dist'),
+            filename: 'bundle.js',
             publicPath: '/dist/'
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NoErrorsPlugin()
         ],
-        watch:   true,
+        watch: true,
         devtool: 'eval-source-map',
-        module:  {
+        module: {
             loaders: [
                 {
-                    test:    /\.jsx?$/,
+                    test: /\.jsx?$/,
                     include: path.join(__dirname, 'js'),
-                    loaders: ['babel']
+                    loader: ['babel'],
+                    query: {
+                        presets: ["react-hmre"]
+                    }
                 }
             ]
         }
