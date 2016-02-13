@@ -8,6 +8,7 @@
     "url": "personal"
   },
   "dependencies": {
+    "babel-core": "^6.3.17",
     "body-parser": "1.14.1",
     "es6-promise": "3.0.2",
     "express": "4.13.3",
@@ -24,7 +25,6 @@
     "route-cache": "0.1.2"
   },
   "devDependencies": {
-    "babel-core": "^6.3.17",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "^2.0.0-beta1",
