@@ -63,7 +63,7 @@ app.use(function(err, req, res, next) {
     next(err);
 });
 
-let serverPort = process.env.SERVER_PORT || 80;
+let serverPort = process.env.PORT || 80;
 
 app.listen(serverPort);
 console.log(`Server is Up and Running at Port : ${serverPort}`);
