@@ -43,6 +43,9 @@
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0"
+  }
+  "scripts": {
+    "postinstall": "node bootstrap"
   },
   "author": "kshreve@gmail.com",
   "license": "MIT"

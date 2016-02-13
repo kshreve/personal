@@ -45,7 +45,7 @@ app.get('/*', routeCache.cacheSeconds(3600), (req, res, next) => {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Kevin Shreve</title>
         <link href="/css/styles.min.css" type="text/css" rel="stylesheet">
-        <link rel="shortcut icon" href="/assets/images/favicon.png"/>
+        <link rel="shortcut icon" href="/assets/images/favicon.ico"/>
       </head>
       <body>
         <div id="route-mount"></div>
