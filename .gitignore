@@ -1,0 +1,11 @@
+node_modules/
+dist/
+bin/
+obj/
+.idea/
+styles/css/*.css
+*.log
+uploads/
+
+# Generated node files
+/node/**

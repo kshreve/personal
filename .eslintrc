@@ -1,0 +1,42 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "binaryLiterals": false,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": false,
+    "generators": true,
+    "modules": true,
+    "objectLiteralComputedProperties": false,
+    "objectLiteralDuplicate": false,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "octalLiterals": true,
+    "regexUFlag": true,
+    "regexYFlag": true,
+    "rest": true,
+    "restParams": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true,
+    "unicodeCodePointEscapes": true,
+    "globalReturn": false,
+    "jsx": true,
+    "experimentalObjectRestSpread": false
+  },
+  "env": {
+    "browser": true,
+    "amd": true,
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "semi": 2
+  }
+}
