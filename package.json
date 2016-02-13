@@ -46,7 +46,8 @@
     "node": "5.6.0"
   },
   "scripts": {
-    "start": "node bootstrap.js"
+    "start": "node bootstrap.js",
+    "postinstall": ""
   },
   "author": "kshreve@gmail.com",
   "license": "MIT"

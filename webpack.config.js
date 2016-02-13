@@ -3,7 +3,8 @@ var path    = require('path'),
     config  = {
         entry: [
             'webpack-hot-middleware/client?reload=true',
-            './js/client.jsx'],
+            './js/client.jsx'
+        ],
         output: {
             path: path.join(__dirname, 'dist'),
             filename: 'bundle.js',
