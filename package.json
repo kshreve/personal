@@ -47,7 +47,7 @@
   },
   "scripts": {
     "start": "node bootstrap.js",
-    "postinstall": ""
+    "postinstall": "webpack -p --config webpack.Production.config.js"
   },
   "author": "kshreve@gmail.com",
   "license": "MIT"
