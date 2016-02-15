@@ -1,10 +1,10 @@
 var path    = require('path'),
     webpack = require('webpack');
 
-module.exports = config = {
+module.exports = {
     entry: './js/client.jsx',
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, '/dist/'),
         filename: 'bundle.min.js'
     },
     plugins: [
@@ -15,7 +15,7 @@ module.exports = config = {
             {
                 test: /\.jsx?$/,
                 include: path.join(__dirname, 'js'),
-                loader: ['babel']
+                loaders: ['babel']
             }
         ]
     }
