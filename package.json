@@ -49,7 +49,8 @@
   },
   "scripts": {
     "start": "node bootstrap.js",
-    "postinstall": "webpack --config ./webpack.production.config.js --progress --colorswebpack"
+    "postinstall": "npm run prod",
+    "prod": "webpack --config ./webpack.production.config.js --progress --colorswebpack"
   },
   "author": "kshreve@gmail.com",
   "license": "MIT"
