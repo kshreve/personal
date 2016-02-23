@@ -16,7 +16,15 @@ module.exports = {
                 test: /\.jsx?$/,
                 include: path.join(__dirname, 'js'),
                 loaders: ['babel']
-            }
+            },
+            {
+                    test: /\.css$/,
+                    loaders: ['style', 'css', 'postcss']
+                },
+                {
+                    test: /\.scss/,
+                    loaders: ['style', 'css', 'postcss', 'sass']
+                }
         ]
     }
 };
