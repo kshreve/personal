@@ -14,6 +14,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 let app = express();
 
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'assets')));
 
 if(process.env.NODE_ENV !== 'production') {
     let config   = require('./webpack.config'),
