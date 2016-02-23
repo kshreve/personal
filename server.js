@@ -14,7 +14,6 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 let app = express();
 
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(express.static(path.join(__dirname, 'assets')));
 
 if(process.env.NODE_ENV !== 'production') {
     let config   = require('./webpack.config'),
@@ -67,5 +66,8 @@ app.use(function(err, req, res, next) {
 let serverPort = process.env.PORT || 80;
 
 app.listen(serverPort);
-console.log(`Server is Up and Running at Port : ${serverPort}`);
-open(`http://localhost:${serverPort}`);
+
+if(process.env.NODE_ENV !== 'production') {
+    console.log(`Server is Up and Running at Port : ${serverPort}`);
+    open(`http://localhost:${serverPort}`);
+}
