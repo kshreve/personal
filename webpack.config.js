@@ -1,13 +1,13 @@
-var path    = require('path'),
-    webpack = require('webpack'),
-    autoprefixer = require('autoprefixer'),
+var path              = require('path'),
+    webpack           = require('webpack'),
+    autoprefixer      = require('autoprefixer'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    sassLoaders = [
+    sassLoaders       = [
         'css-loader',
         'postcss-loader',
         'sass-loader'
     ],
-    config  = {
+    config            = {
         entry: [
             'webpack-hot-middleware/client?reload=true',
             './js/client.jsx'
@@ -20,7 +20,7 @@ var path    = require('path'),
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NoErrorsPlugin(),
-            new ExtractTextPlugin("styles.css")
+            new ExtractTextPlugin("styles.min.css")
         ],
         watch: true,
         devtool: 'eval-source-map',
@@ -34,14 +34,14 @@ var path    = require('path'),
                         presets: ["react-hmre"]
                     }
                 },
-                {
-                    test: /\.css$/,
-                    loader: ExtractTextPlugin.extract('style', 'css!postcss')
-                },
-                {
-                    test: /\.scss/,
-                    loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
-                }
+                /*                {
+                 test: /\.css$/,
+                 loader: ExtractTextPlugin.extract('style', 'css!postcss')
+                 },
+                 {
+                 test: /\.scss/,
+                 loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
+                 }*/
             ]
         },
         postcss: [
