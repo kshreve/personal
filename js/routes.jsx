@@ -1,12 +1,14 @@
 import React from 'react';
-import Router, { Route, Redirect, IndexRoute } from 'react-router';
+import Router, {Route, Redirect, IndexRoute} from 'react-router';
+
 import App from './App.jsx';
+import BlogList from './views/blogs/BlogList.jsx';
+import BlogDetail from './views/blogs/BlogDetail.jsx';
+import NotFound from './views/NotFound.jsx';
 
 export default [
-    <Route key="/" path="/" component={App}>
-        <IndexRoute key="indexRoute" component={App}/>
-    </Route>,
-
-    //Not Found
-    <Route key="*" path="*" component={App}/>
+    <Route path="/" component={App}/>,
+    <Route path="blogs" component={BlogList}/>,
+    <Route path="blogs/:id" component={BlogDetail}/>,
+    <Route path="*" component={NotFound}/>
 ];
