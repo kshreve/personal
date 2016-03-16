@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
 
-import BaseComponent from './controls/BaseComponent.jsx';
+import BaseComponent from './../controls/BaseComponent.jsx';
+import Nav from './Nav.jsx';
 
 export default class App extends BaseComponent {
     constructor(props) {
@@ -12,7 +11,8 @@ export default class App extends BaseComponent {
     render() {
         return (
             <div>
-                Test
+                <Nav/>
+                {this.props.children}
             </div>
         );
     }
