@@ -8,10 +8,11 @@ import BlogDetail from './views/blogs/BlogDetail.jsx';
 import NotFound from './views/NotFound.jsx';
 
 export default [
-    <Route path="/" component={App}>
-        <Route path="about" component={About}/>
-        <Route path="blogs" component={BlogList}/>
-        <Route path="blogs/:id" component={BlogDetail}/>
-        <Route path="*" component={NotFound}/>
+    <Route key="/" path="/" component={App}>
+        <IndexRoute component={About}/>
+        <Route key="about" path="about" component={About}/>
+        <Route key="blogs" path="blogs" component={BlogList}/>
+        <Route key="blogs/:id" path="blogs/:id" component={BlogDetail}/>
+        <Route key="*" path="*" component={NotFound}/>
     </Route>
 ];

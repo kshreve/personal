@@ -3,7 +3,6 @@ import path from 'path';
 import open from 'open';
 import routeCache from 'route-cache';
 import webpack from 'webpack';
-import connectLiveReload from 'connect-livereload';
 
 import configureStore from './js/redux/configureStore.jsx';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -13,13 +12,12 @@ let app = express();
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-if(process.env.NODE_ENV !== 'production') {
-    app.use(connectLiveReload());
-    let config   = require('./webpack.config'),
+if (process.env.NODE_ENV !== 'production') {
+    let config = require('./webpack.config'),
         compiler = webpack(config);
 
     app.use(webpackDevMiddleware(compiler, {
-        noInfo: true,
+        noInfo:     true,
         publicPath: config.output.publicPath
     }));
 
@@ -57,7 +55,7 @@ app.get('/*', routeCache.cacheSeconds(3600), (req, res, next) => {
     `);
 });
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     console.error(err.stack);
     next(err);
 });
@@ -66,7 +64,7 @@ let serverPort = process.env.PORT || 80;
 
 app.listen(serverPort);
 
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     console.log(`Server is Up and Running at Port : ${serverPort}`);
     open(`http://localhost:${serverPort}`);
 }

@@ -11,7 +11,7 @@ export default class BlogDetail extends BaseComponent {
         let {params: {id}} = this.props;
         return (
             <div>
-                Yo dog, I heard you liked BlogDetail id:{id}
+                BlogDetail id:{id}
             </div>
         );
     }

@@ -10,7 +10,7 @@ export default class BlogList extends BaseComponent {
     render() {
         return (
             <div>
-                Why won't blog list work?
+                BlogList
             </div>
         );
     }
