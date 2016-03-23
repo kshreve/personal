@@ -13,6 +13,7 @@ export default class Nav extends BaseComponent {
             <div className="row">
                 <div className="two columns"><Link to="/about">About</Link></div>
                 <div className="two columns"><Link to="/blogs">Blog List</Link></div>
+                <div className="two columns"><a href='/resume.pdf'>Resume</a></div>
             </div>
         );
     }

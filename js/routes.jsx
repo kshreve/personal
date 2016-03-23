@@ -9,7 +9,7 @@ import NotFound from './views/NotFound.jsx';
 
 export default [
     <Route key="/" path="/" component={App}>
-        <IndexRoute component={About}/>
+        <IndexRoute title="About" component={About}/>
         <Route key="about" path="about" title="About" component={About}/>
         <Route key="blogs" path="blogs" title="Blog List" component={BlogList}/>
         <Route key="blogs/:id" path="blogs/:id" title="Blog Detail" component={BlogDetail}/>
