@@ -2,16 +2,15 @@ import React from 'react';
 
 import BaseComponent from './../../controls/BaseComponent.jsx';
 
-export default class BlogDetail extends BaseComponent {
+export default class Blog extends BaseComponent {
     constructor(props) {
         super(props);
     }
 
     render() {
-        let {params: {id}} = this.props;
         return (
             <div>
-                BlogDetail id:{id}
+                Blog
             </div>
         );
     }

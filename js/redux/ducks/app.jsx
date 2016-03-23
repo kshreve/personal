@@ -2,12 +2,7 @@ const GET_APP_REQUEST = "GET_APP_REQUEST";
 const GET_APP_SUCCESS = "GET_APP_SUCCESS";
 const GET_APP_FAIL = "GET_APP_FAIL";
 
-const initialState = {
-    isFetching:  false,
-    isError:     false,
-    postSuccess: false,
-    error:       ''
-};
+const initialState = {};
 
 export default function reducer(state = initialState, action = null) {
     switch (action.type) {

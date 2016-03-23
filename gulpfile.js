@@ -13,7 +13,7 @@ gulp.task('move', ['styles'], function () {
 gulp.task('styles', function () {
     return gulp.src('styles/*.scss')
                .pipe(sass().on('error', sass.logError))
-               .pipe(cleanCss())
+               //.pipe(cleanCss())
                .pipe(rename({suffix: '.min'}))
                .pipe(gulp.dest('dist'));
 });

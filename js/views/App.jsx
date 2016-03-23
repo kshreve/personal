@@ -10,11 +10,13 @@ export default class App extends BaseComponent {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <Nav/>
-                    <h2>{this.props.children.props.route.title}</h2>
-                    {this.props.children}
+            <div>
+                <Nav/>
+                <div className="container content">
+                    <div className="row">
+                        <h2>{this.props.children.props.route.title}</h2>
+                        {this.props.children}
+                    </div>
                 </div>
             </div>
         );

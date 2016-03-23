@@ -1,11 +1,35 @@
-@import 'normalize.css';
-@import 'skeleton.css';
+@import 'normalize';
+@import 'skeleton';
 @import 'variables';
 
 body {
   background-color: $primary;
 }
 
-.container {
+.list-item-unstyled {
+  list-style: none;
+  display: inline-block;
+}
+
+.nav {
+  background-color: white;
+  margin-bottom: 16px;
+}
+
+.nav__item {
+  text-decoration: none;
+  padding: 0 10px 0 0;
+  &--active {
+
+  }
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.content {
   background-color: $secondary;
+  padding: 20px;
 }

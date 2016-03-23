@@ -10,11 +10,13 @@ export default class Nav extends BaseComponent {
 
     render() {
         return (
-            <div className="row">
-                <div className="two columns"><Link to="/about">About</Link></div>
-                <div className="two columns"><Link to="/blogs">Blog List</Link></div>
-                <div className="two columns"><a href='/resume.pdf'>Resume</a></div>
-            </div>
+            <nav className="nav">
+                <ul className="container">
+                    <li className="list-item-unstyled"><Link className="nav__item" to="/about" activeClassName="nav__item--active">About</Link></li>
+                    <li className="list-item-unstyled"><Link className="nav__item" to="/blog" activeClassName="nav__item--active">Blog</Link></li>
+                    <li className="list-item-unstyled"><a className="nav__item" href='/resume.pdf'>Resume</a></li>
+                </ul>
+            </nav>
         );
     }
 }
