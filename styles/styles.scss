@@ -1,3 +1,11 @@
 @import 'normalize.css';
 @import 'skeleton.css';
+@import 'variables';
 
+body {
+  background-color: $primary;
+}
+
+.container {
+  background-color: white;
+}
