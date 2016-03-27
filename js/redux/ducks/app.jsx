@@ -4,7 +4,7 @@ const GET_APP_FAIL = "GET_APP_FAIL";
 
 const initialState = {};
 
-export default function reducer(state = initialState, action = null) {
+export default (state = initialState, action = null) => {
     switch (action.type) {
         case GET_APP_REQUEST:
         case GET_APP_SUCCESS:
@@ -16,9 +16,9 @@ export default function reducer(state = initialState, action = null) {
         default:
             return state;
     }
-}
+};
 
-export function getApp(url) {
+export const getApp = (url) => {
     return {
         types:         [GET_APP_REQUEST, GET_APP_SUCCESS, GET_APP_FAIL],
         shouldCallAPI: () => true,
@@ -30,5 +30,7 @@ export function getApp(url) {
                 'Accept':       'application/json'
             }
         }
-    }
-}
+    };
+};
+
+export const load = (data) => ({type: GET_APP_SUCCESS, data});
