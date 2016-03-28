@@ -3,6 +3,13 @@ import path from 'path';
 import open from 'open';
 import routeCache from 'route-cache';
 import webpack from 'webpack';
+import autoprefixer from 'autoprefixer';
+import cleanCss from 'gulp-clean-css';
+import gulp from 'gulp';
+import rename from 'gulp-rename';
+import sass from 'gulp-sass';
+import fs from 'fs';
+import bodyParser from 'body-parser';
 
 import configureStore from './js/redux/configureStore.jsx';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -10,6 +17,8 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 
 let app = express();
 
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 if (process.env.NODE_ENV !== 'production') {
@@ -53,6 +62,30 @@ app.get('/*', routeCache.cacheSeconds(3600), (req, res, next) => {
       </body>
     </html>
     `);
+});
+
+app.post('/customTheme', (req, res) => {
+    let sassToCreate = '',
+        theme = '';
+
+    for (let property in req.body) {
+        sassToCreate += `\$${property.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}: ${req.body[property]}; `;
+    }
+
+    fs.writeFileSync('styles/theme/_customTheme.scss', sassToCreate, 'utf8', () => true);
+
+    gulp.task('theme', () => {
+        return gulp.src('styles/theme/theme.scss')
+                   .pipe(sass().on('error', sass.logError))
+                   .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
+                   .pipe(cleanCss())
+                   .pipe(rename('theme.min.css'))
+                   .pipe(gulp.dest(`dist/${theme}`));
+    });
+
+    gulp.start('theme', () => true);
+
+    res.json({ message: 'Theme generated.' });
 });
 
 app.use(function (err, req, res, next) {

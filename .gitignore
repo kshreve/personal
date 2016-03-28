@@ -3,6 +3,4 @@ dist/
 .idea/
 styles/css/*.css
 *.log
-
-# Generated node files
-/node/**
+_customTheme.scss

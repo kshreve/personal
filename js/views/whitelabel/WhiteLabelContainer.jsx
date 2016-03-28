@@ -1,7 +1,7 @@
 import { reduxForm } from 'redux-form';
 
 import WhiteLabel from './WhiteLabel.jsx';
-import { load } from './../../redux/ducks/app.jsx';
+import { createCustomTheme } from './../../redux/ducks/theme.jsx';
 
 let formName = 'whiteLabel',
     fields = ['theme', 'primary', 'secondary', 'accentOne', 'accentTwo'];
@@ -11,9 +11,9 @@ export default reduxForm({
         fields: fields
     },
     (state) => ({
-        app: state.app
+        theme: state.theme
     }),
     (dispatch) => ({
-        load: (data) => dispatch(load(data))
+        createCustomTheme: (data) => dispatch(createCustomTheme(data))
     })
 )(WhiteLabel);

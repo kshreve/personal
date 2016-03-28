@@ -9,7 +9,7 @@ export default class WhiteLabel extends BaseComponent {
     }
 
     render() {
-        let { fields: { theme, primary, secondary, accentOne, accentTwo }, handleSubmit, load, values } = this.props;
+        let { fields: { theme, primary, secondary, accentOne, accentTwo }, handleSubmit, createCustomTheme, values } = this.props;
 
         return (
             <div>
@@ -18,7 +18,7 @@ export default class WhiteLabel extends BaseComponent {
                 <Input type="text" field={secondary} label="Secondary Color"/>
                 <Input type="text" field={accentOne} label="Accent One Color"/>
                 <Input type="text" field={accentTwo} label="Accent Two Color"/>
-                <button onClick={() => handleSubmit(load(values))}>Submit</button>
+                <button onClick={() => handleSubmit(createCustomTheme(values))}>Submit</button>
             </div>
         );
     }
