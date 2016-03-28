@@ -59,7 +59,7 @@
     "start": "node bootstrap.js",
     "postinstall": "npm run prod && npm run gulp",
     "prod": "npm run prod-scripts",
-    "prod-scripts": "webpack --config ./webpack.production.config.js --progress --colorswebpack"
+    "prod-scripts": "webpack -p --config ./webpack.production.config.js --progress --colorswebpack"
   },
   "author": "kshreve@gmail.com",
   "license": "MIT"
