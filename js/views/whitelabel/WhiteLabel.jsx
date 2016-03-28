@@ -9,10 +9,11 @@ export default class WhiteLabel extends BaseComponent {
     }
 
     render() {
-        let { fields: { primary, secondary, accentOne, accentTwo }, handleSubmit, load, values } = this.props;
+        let { fields: { theme, primary, secondary, accentOne, accentTwo }, handleSubmit, load, values } = this.props;
 
         return (
             <div>
+                <Input type="text" field={theme} label="Name of Theme"/>
                 <Input type="text" field={primary} label="Primary Color"/>
                 <Input type="text" field={secondary} label="Secondary Color"/>
                 <Input type="text" field={accentOne} label="Accent One Color"/>

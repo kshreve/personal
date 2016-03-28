@@ -8,12 +8,12 @@ export default class Input extends BaseComponent {
     }
 
     render() {
-        let { field, label, type, helpText } = this.props;
+        let { field, label, type, helpText, value } = this.props;
 
         return (
             <div {...this.props}>
                 <label title="">{label}:</label>
-                <input {...this.props} type={type} {...field}/>
+                <input {...this.props} type={type} value={value || ''} {...field}/>
                 <small>{helpText}</small>
             </div>
         );

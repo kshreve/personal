@@ -4,7 +4,7 @@ import WhiteLabel from './WhiteLabel.jsx';
 import { load } from './../../redux/ducks/app.jsx';
 
 let formName = 'whiteLabel',
-    fields = ['primary', 'secondary', 'accentOne', 'accentTwo'];
+    fields = ['theme', 'primary', 'secondary', 'accentOne', 'accentTwo'];
 
 export default reduxForm({
         form:   formName,
