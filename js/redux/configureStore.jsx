@@ -2,9 +2,11 @@ import thunk from 'redux-thunk';
 import { compose, createStore, applyMiddleware } from 'redux';
 
 import rootReducer from './rootReducer.jsx';
+import api from '../middleware/api.jsx';
 import logger from '../middleware/logger.jsx';
 
 let middleware = [
+    api,
     thunk
 ];
 
