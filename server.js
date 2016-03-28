@@ -50,8 +50,8 @@ app.get('/*', routeCache.cacheSeconds(3600), (req, res, next) => {
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Kevin Shreve</title>
-        <link href="/styles.min.css" type="text/css" rel="stylesheet">
-        <link rel="shortcut icon" href="/favicon.ico"/>
+        <link href="/styles.min.css" type="text/css" rel="stylesheet" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body>
         <div id="route-mount"></div>
@@ -69,7 +69,11 @@ app.post('/customTheme', (req, res) => {
         theme = '';
 
     for (let property in req.body) {
-        sassToCreate += `\$${property.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}: ${req.body[property]}; `;
+        if (property === 'theme') {
+            theme = req.body[property];
+        } else {
+            sassToCreate += `\$${property.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}: ${req.body[property]}; `;
+        }
     }
 
     fs.writeFileSync('styles/theme/_customTheme.scss', sassToCreate, 'utf8', () => true);
@@ -77,13 +81,14 @@ app.post('/customTheme', (req, res) => {
     gulp.task('theme', () => {
         return gulp.src('styles/theme/theme.scss')
                    .pipe(sass().on('error', sass.logError))
-                   .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
                    .pipe(cleanCss())
                    .pipe(rename('theme.min.css'))
                    .pipe(gulp.dest(`dist/${theme}`));
     });
 
-    gulp.start('theme', () => true);
+    gulp.start('theme', () => {
+        //
+    });
 
     res.json({ message: 'Theme generated.' });
 });
