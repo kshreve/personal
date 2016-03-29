@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     flatten = require('gulp-flatten');
 
 gulp.task('move', ['styles'], function () {
-    return gulp.src(['assets/**/*.*', 'assets/**.*'], {base: './'})
+    return gulp.src(['assets/**/*.*', 'assets/**.*'], { base: './' })
                .pipe(flatten())
                .pipe(gulp.dest('dist'));
 });
@@ -15,7 +15,7 @@ gulp.task('styles', function () {
     return gulp.src('styles/*.scss')
                .pipe(sass().on('error', sass.logError))
                .pipe(cleanCss())
-               .pipe(rename({suffix: '.min'}))
+               .pipe(rename({ suffix: '.min' }))
                .pipe(gulp.dest('dist'));
 });
 
