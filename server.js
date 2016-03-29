@@ -88,10 +88,8 @@ app.post('/customTheme', (req, res) => {
     });
 
     gulp.start('theme', () => {
-        //
+        res.json({ message: 'Theme generated.' });
     });
-
-    res.json({ message: 'Theme generated.' });
 });
 
 app.use(function (err, req, res, next) {

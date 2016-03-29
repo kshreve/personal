@@ -8,25 +8,25 @@ export default class App extends BaseComponent {
         super(props);
 
         this.state = {
-            client: ''
+            theme: ''
         };
     }
 
-    componentWillMount() {
-        if (this.props.location.query) {
-            let { client } = this.props.location.query;
-            if (client) {
-                this.setState({ client: client });
-            }
+    componentDidUpdate(previousProps, previousState) {
+        let { theme: { name } } = this.props;
+        if (previousProps.theme.name != name) {
+            this.setState({
+                theme: name
+            });
         }
     }
 
     render() {
-        let { client } = this.state;
+        let { theme } = this.state;
 
         return (
             <div>
-                <link href={`${client}/theme.min.css`} type="text/css" rel="stylesheet"/>
+                { theme && <link href={`${theme}/theme.min.css`} type="text/css" rel="stylesheet"/> }
                 <Nav/>
                 <div className="container content">
                     <div className="row">
