@@ -4,7 +4,7 @@ import Router, { Route, Redirect, IndexRoute } from 'react-router';
 import AppContainer from './views/AppContainer.jsx';
 import About from './views/about/About.jsx';
 import Blog from './views/blogs/Blog.jsx';
-import Crankings from './views/combinedRankings/Crankings.jsx';
+import Crankings from './views/combinedRankings/rename.jsx';
 import BlogPost from './views/blogs/BlogPost.jsx';
 import NotFound from './views/NotFound.jsx';
 import WhiteLabelContainer from './views/whitelabel/WhiteLabelContainer.jsx';
