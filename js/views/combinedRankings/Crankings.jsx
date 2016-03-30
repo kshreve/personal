@@ -35,7 +35,7 @@ export default class Crankings extends BaseComponent {
                                         <td>{record.teamName}</td>
                                         <td>{record.footballRank}</td>
                                         <td>{record.basketballRank}</td>
-                                        <td>{parseInt(record.footballRank, 10) + parseInt(record.basketballRank, 10)}</td>
+                                        <td>{record.combinedRank}</td>
                                     </tr>
                                 );
                             })

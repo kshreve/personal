@@ -8,6 +8,15 @@ export default class CrankingsDataImport extends BaseComponent {
         super(props);
     }
 
+    componentDidUpdate(previousProps, previousState) {
+        let { postSuccess } = this.props;
+        
+        if (previousProps.postSuccess != postSuccess && postSuccess) {
+            this.props.addAlert('Data added Successfully!');
+            this.props.initializeForm({});
+        }
+    }
+
     render() {
         let { fields: { teamName, footballRank, basketballRank }, handleSubmit, postDocuments, values } = this.props;
 

@@ -9,8 +9,9 @@ export default class WhiteLabel extends BaseComponent {
     }
 
     componentDidUpdate(previousProps, previousState) {
-        if( previousProps.theme.name != this.props.theme.name) {
+        if (previousProps.theme.name != this.props.theme.name) {
             this.props.addAlert('Successfully Created Theme!');
+            this.props.initializeForm({});
         }
     }
 

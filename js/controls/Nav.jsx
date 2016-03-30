@@ -11,13 +11,13 @@ export default class Nav extends BaseComponent {
 
     render() {
         let navRoutes = Routes[0].props.children.filter((route) => route.props.nav);
-        
+
         return (
             <nav className="nav">
                 <ul className="container">
                     {
                         navRoutes.map((route) => {
-                            return <li className="list-item-unstyled"><Link className="nav__item" to={`/${route.key}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
+                            return <li key={route.key} className="list-item-unstyled"><Link className="nav__item" to={`/${route.key}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
                         })
                     }
                     <li className="list-item-unstyled"><a className="nav__item" href='/resume.pdf'>Resume</a></li>
