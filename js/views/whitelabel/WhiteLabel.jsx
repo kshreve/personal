@@ -14,10 +14,10 @@ export default class WhiteLabel extends BaseComponent {
         return (
             <div>
                 <Input type="text" field={theme} label="Name of Theme"/>
-                <Input type="text" field={primary} label="Primary Color"/>
-                <Input type="text" field={secondary} label="Secondary Color"/>
-                <Input type="text" field={accentOne} label="Accent One Color"/>
-                <Input type="text" field={accentTwo} label="Accent Two Color"/>
+                <Input type="color" field={primary} label="Primary Color"/>
+                <Input type="color" field={secondary} label="Secondary Color"/>
+                <Input type="color" field={accentOne} label="Accent One Color"/>
+                <Input type="color" field={accentTwo} label="Accent Two Color"/>
                 <button onClick={() => handleSubmit(createCustomTheme(values))}>Submit</button>
             </div>
         );

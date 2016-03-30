@@ -5,6 +5,7 @@ import AppContainer from './views/AppContainer.jsx';
 import About from './views/about/About.jsx';
 import Blog from './views/blogs/Blog.jsx';
 import CrankingsContainer from './views/combinedRankings/CrankingsContainer.jsx';
+import CrankingsDataImportContainer from './views/combinedRankings/CrankingsDataImportContainer.jsx';
 import BlogPost from './views/blogs/BlogPost.jsx';
 import NotFound from './views/NotFound.jsx';
 import WhiteLabelContainer from './views/whitelabel/WhiteLabelContainer.jsx';
@@ -16,6 +17,7 @@ export default [
         <Route nav="true" key="blog" path="blog" title="Blog" component={Blog}/>
         <Route nav="true" key="whitelabel" path="whitelabel" title="White Labeling" component={WhiteLabelContainer}/>
         <Route nav="true" key="crankings" path="crankings" title="Combined Rankings" component={CrankingsContainer}/>
+        <Route key="crankingsData" path="crankingsData" title="Create Data - Combined Rankings" component={CrankingsDataImportContainer}/>
         <Route key="blog/:id" path="blog/:id" title="Blog Post" component={BlogPost}/>
         <Route key="*" path="*" title="Not Found" component={NotFound}/>
     </Route>
