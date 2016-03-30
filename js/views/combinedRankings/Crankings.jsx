@@ -13,6 +13,8 @@ export default class Crankings extends BaseComponent {
     }
 
     render() {
+        let { crankings: { documents } } = this.props;
+
         return (
             <div>
                 <Link to="/crankingsData">Create Data</Link>
@@ -26,12 +28,18 @@ export default class Crankings extends BaseComponent {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                        </tr>
+                        {
+                            documents && documents.map((record) => {
+                                return (
+                                    <tr>
+                                        <td>{record.teamName}</td>
+                                        <td>{record.footballRank}</td>
+                                        <td>{record.basketballRank}</td>
+                                        <td>{parseInt(record.footballRank, 10) + parseInt(record.basketballRank, 10)}</td>
+                                    </tr>
+                                );
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
