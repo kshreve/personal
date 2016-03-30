@@ -1,3 +1,7 @@
+export const parseAndAddStrings = (first, second) => {
+    return parseInt(first, 10) + parseInt(second, 10);
+};
+
 let appendQueryParameters = (url, queryParameters = []) => {
     if (queryParameters) {
         queryParameters.forEach((option, i) => {

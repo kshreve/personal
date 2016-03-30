@@ -1,6 +1,5 @@
-import { get, post } from './../../genericApiFunctions.jsx';
+import { get, post, parseAndAddStrings } from './../../convenience/functions.jsx';
 import { MONGO_LAB } from './../constants/endpoints.jsx';
-import { parseAndAddStrings } from './../constants/convenienceFunctions.jsx';
 
 const GET_MONGO_LAB_DOCUMENTS_REQUEST = "GET_MONGO_LAB_DOCUMENTS_REQUEST";
 const GET_MONGO_LAB_DOCUMENTS_SUCCESS = "GET_MONGO_LAB_DOCUMENTS_SUCCESS";

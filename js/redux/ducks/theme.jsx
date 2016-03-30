@@ -1,4 +1,4 @@
-import { post } from './../../genericApiFunctions.jsx';
+import { post } from './../../convenience/functions.jsx';
 import { CUSTOM_THEME } from './../constants/endpoints.jsx';
 
 const CREATE_CUSTOM_THEME_REQUEST = "CREATE_CUSTOM_THEME_REQUEST";
