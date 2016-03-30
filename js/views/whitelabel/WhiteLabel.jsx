@@ -8,6 +8,12 @@ export default class WhiteLabel extends BaseComponent {
         super(props);
     }
 
+    componentDidUpdate(previousProps, previousState) {
+        if( previousProps.theme.name != this.props.theme.name) {
+            this.props.addAlert('Successfully Created Theme!');
+        }
+    }
+
     render() {
         let { fields: { theme, primary, secondary, accentOne, accentTwo }, handleSubmit, createCustomTheme, values } = this.props;
 
