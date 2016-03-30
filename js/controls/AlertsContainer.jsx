@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Alerts from './Alerts.jsx';
-import { addAlert, removeAlert } from './../redux/ducks/alerts.jsx';
+import { removeAlert } from './../redux/ducks/alerts.jsx';
 
 export default connect(
     (state) => ({
