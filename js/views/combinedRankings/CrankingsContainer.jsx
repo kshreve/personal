@@ -6,6 +6,6 @@ import { getRecords } from './../../redux/ducks/crankings.jsx';
 export default connect(
     (state) => ({}),
     (dispatch) => ({
-        getRecords: dispatch(getRecords())
+        getRecords: ()=> (dispatch(getRecords()))
     })
 )(Crankings);

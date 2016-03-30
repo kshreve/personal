@@ -13,7 +13,7 @@ export default (state = initialState, action = null) => {
     switch (action.type) {
         case GET_MONGO_LAB_COLLECTIONS_SUCCESS:
             return Object.assign({}, state, {
-                collections: action.payload
+                collections: action.response
             });
         case GET_MONGO_LAB_COLLECTIONS_REQUEST:
         case GET_MONGO_LAB_COLLECTIONS_FAIL:
