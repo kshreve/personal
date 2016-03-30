@@ -33,6 +33,7 @@
     "gulp-sass": "^2.2.0",
     "history": "1.9.1",
     "isomorphic-fetch": "2.1.1",
+    "kinetic": "^5.2.0",
     "node": "0.0.0",
     "open": "0.0.5",
     "path": "0.11.14",
