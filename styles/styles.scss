@@ -33,3 +33,13 @@ body {
   background-color: $secondary;
   padding: 20px;
 }
+
+.alerts-container {
+  position: absolute;
+  right: 10%;
+  background-color: $accent-one;
+}
+
+.alert-item {
+  display: block;
+}

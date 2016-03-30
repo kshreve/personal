@@ -1,7 +1,8 @@
 import React from 'react';
 
 import BaseComponent from './../controls/BaseComponent.jsx';
-import Nav from './Nav.jsx';
+import Nav from './../controls/Nav.jsx';
+import AlertsContainer from './../controls/AlertsContainer.jsx';
 
 export default class App extends BaseComponent {
     constructor(props) {
@@ -26,8 +27,12 @@ export default class App extends BaseComponent {
 
         return (
             <div>
-                { theme && <link href={`${theme}/theme.min.css`} type="text/css" rel="stylesheet"/> }
-                <Nav/>
+                {
+                    theme && <link href={`${theme}/theme.min.css`} type="text/css" rel="stylesheet"/>
+                }
+
+                <Nav />
+                <AlertsContainer />
                 <div className="container content">
                     <div className="row">
                         <h1>{this.props.children.props.route.title}</h1>

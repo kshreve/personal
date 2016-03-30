@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import BaseComponent from './../controls/BaseComponent.jsx';
+import BaseComponent from './BaseComponent.jsx';
 import Routes from './../routes.jsx';
 
 export default class Nav extends BaseComponent {
