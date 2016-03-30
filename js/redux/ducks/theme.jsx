@@ -25,5 +25,4 @@ export default (state = initialState, action = null) => {
     }
 };
 
-//post = (data, types, endpoint, queryParameters) => {
 export const createCustomTheme = (data) => (post(data, [CREATE_CUSTOM_THEME_REQUEST, CREATE_CUSTOM_THEME_SUCCESS, CREATE_CUSTOM_THEME_FAIL], CUSTOM_THEME));
