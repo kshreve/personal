@@ -3,7 +3,6 @@ import path from 'path';
 import open from 'open';
 import routeCache from 'route-cache';
 import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
 import cleanCss from 'gulp-clean-css';
 import gulp from 'gulp';
 import rename from 'gulp-rename';
