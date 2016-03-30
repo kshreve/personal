@@ -7,14 +7,14 @@ export default class Alerts extends BaseComponent {
         super(props);
     }
 
-    componentDidMount() {
-        let { alerts } = this.props;
+    componentDidUpdate(previousProps, previousState) {
+        let { alerts, removeAlert } = this.props;
 
-        setInterval(() => {
-            if (alerts.length > 0) {
-                this.props.removeAlert(0);
-            }
-        }, 5000);
+        if (alerts.length > 0 && previousProps.alerts.length < alerts.length) {
+            setTimeout(() => {
+                removeAlert(0);
+            }, 5000);
+        }
     }
 
     render() {
