@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     cleanCss = require('gulp-clean-css'),
     rename = require('gulp-rename'),
     eslint = require('gulp-eslint'),
+    livereload = require('gulp-livereload'),
     flatten = require('gulp-flatten');
 
 gulp.task('move', ['styles'], function () {
@@ -27,6 +28,7 @@ gulp.task('eslint', function () {
 });
 
 gulp.task('watch', function () {
+    livereload.listen();
     gulp.watch(['styles/*.scss', 'views/**/*.jsx'], ['move', 'eslint']);
 });
 

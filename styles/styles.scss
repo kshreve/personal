@@ -35,11 +35,19 @@ body {
 }
 
 .alerts-container {
-  position: absolute;
-  right: 10%;
-  background-color: $accent-one;
+  position: fixed;
+  background-color: red;
 }
 
 .alert-item {
   display: block;
+  &--success {
+    background-color: $success;
+  }
+  &--info {
+    background-color: $info;
+  }
+  &--failure {
+    background-color: $failure;
+  }
 }
