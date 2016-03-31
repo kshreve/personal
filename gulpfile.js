@@ -9,7 +9,8 @@ var gulp = require('gulp'),
 gulp.task('move', ['styles'], function () {
     return gulp.src(['assets/**/*.*', 'assets/**.*'], { base: './' })
                .pipe(flatten())
-               .pipe(gulp.dest('dist'));
+               .pipe(gulp.dest('dist'))
+               .pipe(livereload());
 });
 
 gulp.task('styles', function () {
