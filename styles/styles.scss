@@ -37,10 +37,14 @@ body {
 .alerts-container {
   position: fixed;
   background-color: red;
+  width: 100%;
+  max-width: 960px;
 }
 
 .alert-item {
   display: block;
+  max-width: 960px;
+  margin: 0 auto;
   &--success {
     background-color: $success;
   }
