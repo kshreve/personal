@@ -17,14 +17,22 @@ export default class Alerts extends BaseComponent {
         }
     }
 
+    renderAlert(alert) {
+        return (
+            <div className={`alerts-container alerts-container--${alert.type}`}>
+                <div className="container">
+                    <span className={`alert-item`}>{alert.text}</span>
+                </div>
+            </div>
+        );
+    }
+
     render() {
         let { alerts } = this.props;
 
         return (
-            <div className="alerts-container">
-                {
-                    alerts.length > 0 && <span className="alert-item">{alerts[0]}</span>
-                }
+            <div>
+                {alerts.length > 0 && this.renderAlert(alerts[0])}
             </div>
         );
     }

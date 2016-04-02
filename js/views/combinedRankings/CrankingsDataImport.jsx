@@ -10,9 +10,9 @@ export default class CrankingsDataImport extends BaseComponent {
 
     componentDidUpdate(previousProps, previousState) {
         let { postSuccess } = this.props;
-        
+
         if (previousProps.postSuccess != postSuccess && postSuccess) {
-            this.props.addAlert('Data added Successfully!');
+            this.props.addAlert({ text: 'Data added Successfully!', type: 'success' });
             this.props.initializeForm({});
         }
     }

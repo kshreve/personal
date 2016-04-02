@@ -1,7 +1,7 @@
 const ADD_ALERT = 'ADD_ALERT';
 const REMOVE_ALERT = 'REMOVE_ALERT';
 
-const initialState = ['testing'];
+const initialState = [];
 
 export default (state = initialState, action = null) => {
     switch (action.type) {

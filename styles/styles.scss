@@ -35,16 +35,11 @@ body {
 }
 
 .alerts-container {
+  top: 25px;
   position: fixed;
-  background-color: red;
   width: 100%;
-  max-width: 960px;
-}
+  z-index: 10;
 
-.alert-item {
-  display: block;
-  max-width: 960px;
-  margin: 0 auto;
   &--success {
     background-color: $success;
   }
@@ -54,4 +49,8 @@ body {
   &--failure {
     background-color: $failure;
   }
+}
+
+.alert-item {
+  display: block;
 }
