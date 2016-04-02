@@ -29,9 +29,9 @@ export default class Crankings extends BaseComponent {
                     </thead>
                     <tbody>
                         {
-                            documents && documents.map((record) => {
+                            documents && documents.map((record, i) => {
                                 return (
-                                    <tr>
+                                    <tr key={i}>
                                         <td>{record.teamName}</td>
                                         <td>{record.footballRank}</td>
                                         <td>{record.basketballRank}</td>
