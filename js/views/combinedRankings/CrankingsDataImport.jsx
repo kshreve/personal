@@ -18,16 +18,15 @@ export default class CrankingsDataImport extends BaseComponent {
     }
 
     render() {
-        let { fields: { teamName, footballRank, basketballRank }, handleSubmit, postDocuments, values } = this.props;
+        let { fields: { teamName, footballRank, basketballRank }, handleSubmit, submitting, postDocuments } = this.props;
 
         return (
-
-            <div>
+            <form onSubmit={handleSubmit(postDocuments)}>
                 <Input type="text" field={teamName} label="Team Name"/>
                 <Input type="text" field={footballRank} label="Football Rank"/>
                 <Input type="text" field={basketballRank} label="Basketball Rank"/>
-                <button onClick={() => handleSubmit(postDocuments(values))}>Submit</button>
-            </div>
+                <button type="submit" disabled={submitting}>Submit</button>
+            </form>
         );
     }
 }
