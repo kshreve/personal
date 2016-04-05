@@ -68,9 +68,18 @@ body {
   text-align: center;
   justify-content: space-around;
 
-  /* For devices larger than 400px */
-  @media (min-width: 400px) {
+  @media (min-width: $mobile) {
     flex-direction: row;
     justify-content: space-between;
+  }
+}
+
+.crankings__table td, thead th {
+  @media (max-width: $mobile) {
+    display: none;
+
+    &:first-child, &:last-child {
+      display: table-cell;
+    }
   }
 }

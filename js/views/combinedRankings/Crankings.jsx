@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 
 import BaseComponent from './../../controls/BaseComponent.jsx';
 
@@ -13,33 +13,33 @@ export default class Crankings extends BaseComponent {
     }
 
     render() {
-        let { crankings: { documents } } = this.props;
+        let {crankings: {documents}} = this.props;
 
         return (
             <div>
                 <Link to="/crankingsData">Create Data</Link>
-                <table>
+                <table className="crankings__table">
                     <thead>
-                        <tr>
-                            <th>Team Name</th>
-                            <th>Football Rank</th>
-                            <th>Basketball Rank</th>
-                            <th>Combined Rank</th>
-                        </tr>
+                    <tr>
+                        <th>Team Name</th>
+                        <th>Football Rank</th>
+                        <th>Basketball Rank</th>
+                        <th>Combined Rank</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        {
-                            documents && documents.map((record, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <td>{record.teamName}</td>
-                                        <td>{record.footballRank}</td>
-                                        <td>{record.basketballRank}</td>
-                                        <td>{record.combinedRank}</td>
-                                    </tr>
-                                );
-                            })
-                        }
+                    {
+                        documents && documents.map((record, i) => {
+                            return (
+                                <tr key={i}>
+                                    <td>{record.teamName}</td>
+                                    <td>{record.footballRank}</td>
+                                    <td>{record.basketballRank}</td>
+                                    <td>{record.combinedRank}</td>
+                                </tr>
+                            );
+                        })
+                    }
                     </tbody>
                 </table>
             </div>
