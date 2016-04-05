@@ -17,7 +17,7 @@ export default class Nav extends BaseComponent {
                 <ul className="flexzone container">
                     {
                         navRoutes.map((route) => {
-                            return <li key={route.key} className="list-item-unstyled"><Link className="nav__item" to={`/${route.key}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
+                            return <li key={route.key} className="list-item-unstyled nav__item-container"><Link className="nav__item" to={`/${route.key}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
                         })
                     }
                     <li className="list-item-unstyled"><a className="nav__item" href='/resume.pdf'>Resume</a></li>

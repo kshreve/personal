@@ -15,6 +15,14 @@ body {
   margin-bottom: 16px;
 }
 
+.nav__item-container {
+  @media (max-width: 400px) {
+    &:first-child {
+      margin-top: 10px;
+    }
+  }
+}
+
 .nav__item {
   text-decoration: none;
   padding: 0 10px 0 0;
@@ -58,6 +66,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: space-around;
 
   /* For devices larger than 400px */
   @media (min-width: 400px) {
