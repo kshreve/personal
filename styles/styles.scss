@@ -74,7 +74,7 @@ body {
   }
 }
 
-.crankings__table td, thead th {
+.crankings__table td, .crankings__table thead th {
   @media (max-width: $mobile) {
     display: none;
 
