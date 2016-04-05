@@ -8,7 +8,6 @@ body {
 
 .list-item-unstyled {
   list-style: none;
-  display: inline-block;
 }
 
 .nav {
@@ -53,4 +52,16 @@ body {
 
 .alert-item {
   display: block;
+}
+
+.flexzone {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  /* For devices larger than 400px */
+  @media (min-width: 400px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 
 import BaseComponent from './BaseComponent.jsx';
 import Routes from './../routes.jsx';
@@ -14,7 +14,7 @@ export default class Nav extends BaseComponent {
 
         return (
             <nav className="nav">
-                <ul className="container">
+                <ul className="flexzone container">
                     {
                         navRoutes.map((route) => {
                             return <li key={route.key} className="list-item-unstyled"><Link className="nav__item" to={`/${route.key}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
