@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import KineticJS from 'kinetic';
 
 import BaseComponent from './../../controls/BaseComponent.jsx';
@@ -14,44 +15,45 @@ export default class Xkcd extends BaseComponent {
     }
 
     componentDidMount() {
-        let { backgroundSource, foregroundSource } = this.state,
+        let backgroundSize = ReactDom.findDOMNode(this).offsetWidth,
+            {backgroundSource, foregroundSource} = this.state,
             stage = new KineticJS.Stage({
                 container: 'kineticMount',
-                width:     706,
-                height:    706
+                width: backgroundSize,
+                height: backgroundSize
             }),
             backgroundLayer = new KineticJS.Layer(),
-            foregroundLayer = new KineticJS.Layer();
+            foregroundLayer = new KineticJS.Layer(),
+            backgroundImage = new Image();
 
-        let backgroundImage = new Image();
         backgroundImage.src = backgroundSource;
         backgroundImage.onload = () => {
             let backgroundKineticImage = new KineticJS.Image({
-                image:  backgroundImage,
-                x:      0,
-                y:      0,
-                width:  706,
-                height: 706
+                image: backgroundImage,
+                width: backgroundSize,
+                height: backgroundSize
             });
             backgroundLayer.add(backgroundKineticImage);
             stage.add(backgroundLayer);
         };
 
-        let foregroundImage = new Image();
+        let foregroundImage = new Image(),
+            foregroundSize = backgroundSize * 0.8;
 
         foregroundImage.src = foregroundSource;
         foregroundImage.onload = () => {
             let foregroundKineticImage = new KineticJS.Image({
-                image:  foregroundImage,
-                x:      353,
-                y:      353,
-                width:  577,
-                height: 613,
+                image: foregroundImage,
+                x: backgroundSize / 2,
+                y: backgroundSize / 2,
+                width: foregroundSize,
+                height: foregroundSize,
                 offset: {
-                    x: 288.5,
-                    y: 306.5
+                    x: foregroundSize / 2,
+                    y: foregroundSize / 2
                 }
             });
+
             foregroundLayer.add(foregroundKineticImage);
             stage.add(foregroundLayer);
 
