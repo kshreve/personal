@@ -1,6 +1,7 @@
 @import 'normalize';
 @import 'skeleton';
 @import 'variables';
+@import 'font';
 
 body {
   background-color: $primary;
@@ -74,6 +75,13 @@ body {
   }
 }
 
+.flexzone--reverse {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+}
+
 .crankings__table td, .crankings__table thead th {
   @media (max-width: $mobile) {
     display: none;
@@ -81,5 +89,16 @@ body {
     &:first-child, &:last-child {
       display: table-cell;
     }
+  }
+}
+
+.nav__experiments-container {
+  display: none;
+  margin: 0 auto;
+
+  &--active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
