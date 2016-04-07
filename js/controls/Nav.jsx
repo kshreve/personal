@@ -2,52 +2,59 @@ import React from 'react';
 import {Link} from 'react-router';
 
 import BaseComponent from './BaseComponent.jsx';
-import Routes, {experimentPath} from './../routes.jsx';
+import Routes from './../routes.jsx';
 
 export default class Nav extends BaseComponent {
     constructor(props) {
         super(props);
 
         this.state = {
-            experimentsContainerClass: ''
+            parentContainerActiveClass: ''
         };
     }
 
-    openExperiments() {
-        if (this.state.experimentsContainerClass === '') {
+    openParentContainer() {
+        if (this.state.parentContainerActiveClass === '') {
             this.setState({
-                experimentsContainerClass: 'nav__experiments-container--active'
+                parentContainerActiveClass: 'nav__item-parent-container--active'
             });
         } else {
             this.setState({
-                experimentsContainerClass: ''
+                parentContainerActiveClass: ''
             });
         }
     }
 
+    renderNavItem(route) {
+        let {parentContainerActiveClass} = this.state,
+            navItem = <li key={route.key} className="list-item-unstyled nav__item-container"><Link className="nav__item" to={`/${route.props.path}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
+
+        if (!!route.props.hasChildren) {
+            navItem = (<li className="list-item-unstyled flexzone--reverse" onClick={this.openParentContainer}><a>Experiments <span className={`icon ${parentContainerActiveClass ? 'icon-circle-up' : 'icon-circle-down'}`}/></a>
+                <ul className={`nav__item-parent-container ${parentContainerActiveClass}`}>
+                    {
+                        route.props.children.map((childRoute) => {
+                            if (childRoute.props.nav) {
+                                return <li key={childRoute.key} className="list-item-unstyled"><Link className="nav__item" to={`/${route.props.path}/${childRoute.props.path}`} activeClassName="nav__item--active">{childRoute.props.title}</Link></li>;
+                            }
+                        })
+                    }
+                </ul>
+            </li>);
+        }
+
+        return navItem;
+    }
+
     render() {
-        let {experimentsContainerClass} = this.state,
-            navRoutes = Routes[0].props.children.filter((route) => route.props.nav),
-            experimentsParent = Routes[0].props.children.filter((route) => route.props.path === experimentPath)[0],
-            experimentRoutes = experimentsParent.props.children.filter((route) => route.props.nav);
+        let navRoutes = Routes[0].props.children.filter((route) => route.props.nav);
 
         return (
             <nav className="nav">
                 <ul className="flexzone container">
                     {
-                        navRoutes.map((route) => {
-                            return <li key={route.key} className="list-item-unstyled nav__item-container"><Link className="nav__item" to={`/${route.props.path}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
-                        })
+                        navRoutes.map((route) => this.renderNavItem(route))
                     }
-                    <li className="list-item-unstyled flexzone--reverse" onClick={this.openExperiments}><a>Experiments <span className={`icon ${experimentsContainerClass ? 'icon-circle-up' : 'icon-circle-down'}`}/></a>
-                        <ul className={`nav__experiments-container ${experimentsContainerClass}`}>
-                            {
-                                experimentRoutes.map((route) => {
-                                    return <li key={route.key} className="list-item-unstyled"><Link className="nav__item" to={`/${experimentPath}/${route.props.path}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
-                                })
-                            }
-                        </ul>
-                    </li>
                     <li className="list-item-unstyled"><a className="nav__item" href='/resume.pdf'>Resume</a></li>
                 </ul>
             </nav>

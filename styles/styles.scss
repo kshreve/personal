@@ -24,6 +24,18 @@ body {
   }
 }
 
+.nav__item-parent-container {
+  display: none;
+  margin: 0 auto;
+
+  &--active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+
 .nav__item {
   text-decoration: none;
   padding: 0 5px 0 5px;
@@ -89,16 +101,5 @@ body {
     &:first-child, &:last-child {
       display: table-cell;
     }
-  }
-}
-
-.nav__experiments-container {
-  display: none;
-  margin: 0 auto;
-
-  &--active {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 }

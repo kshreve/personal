@@ -11,15 +11,13 @@ import NotFound from './views/NotFound.jsx';
 import WhiteLabelContainer from './views/whitelabel/WhiteLabelContainer.jsx';
 import Xkcd from './views/xkcd1335/Xkcd.jsx';
 
-export const experimentPath = 'experiment';
-
 export default [
     <Route key="/" path="/" component={AppContainer}>
         <IndexRoute title="About" component={About}/>
         <Route nav="true" key="about" path="about" title="About" component={About}/>
         <Route nav="true" key="blog" path="blog" title="Blog" component={Blog}/>
         <Route key="blog/:id" path="blog/:id" title="Blog Post" component={BlogPost}/>
-        <Route key={experimentPath} path={experimentPath}>
+        <Route key="experiment" path="experiment" title="Experiments" hasChildren="true" nav="true">
             <Route nav="true" key="crankings" path="crankings" title="Combined Rankings" component={CrankingsContainer}/>
             <Route key="crankingsData" path="crankingsData" title="Create Data - Combined Rankings" component={CrankingsDataImportContainer}/>
             <Route nav="true" key="whitelabel" path="whitelabel" title="White Labeling" component={WhiteLabelContainer}/>
