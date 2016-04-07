@@ -9,7 +9,7 @@ export default class Nav extends BaseComponent {
         super(props);
 
         this.state = {
-            experiments: 'nav__experiments-container'
+            experiments: ''
         };
     }
 
@@ -31,14 +31,13 @@ export default class Nav extends BaseComponent {
 
         return (
             <nav className="nav">
-                <span className="icon icon-alarm">Home</span>
                 <ul className="flexzone container">
                     {
                         navRoutes.map((route) => {
                             return <li key={route.key} className="list-item-unstyled nav__item-container"><Link className="nav__item" to={`/${route.key}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
                         })
                     }
-                    <li className="list-item-unstyled flexzone--reverse" onClick={this.openExperiments}><a>Experiments</a>
+                    <li className="list-item-unstyled flexzone--reverse" onClick={this.openExperiments}><a>Experiments <span className={`icon ${this.state.experiments ? 'icon-circle-up' : 'icon-circle-down'}`}/></a>
                         <ul className={`nav__experiments-container ${this.state.experiments}`}>
                             {
                                 experimentRoutes.map((route) => {
