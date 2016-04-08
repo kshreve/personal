@@ -7,36 +7,24 @@ import AlertsContainer from './../controls/AlertsContainer.jsx';
 export default class App extends BaseComponent {
     constructor(props) {
         super(props);
-
-        this.state = {
-            theme: ''
-        };
-    }
-
-    componentDidUpdate(previousProps, previousState) {
-        let { theme: { name } } = this.props;
-        if (previousProps.theme.name != name) {
-            this.setState({
-                theme: name
-            });
-        }
     }
 
     render() {
-        let { theme } = this.state;
+        let { theme: { name }, children } = this.props,
+            { props: { route: { title } } } = children;
 
         return (
             <div>
                 {
-                    theme && <link href={`${theme}/theme.min.css`} type="text/css" rel="stylesheet"/>
+                    name && <link href={`/${name}/theme.min.css`} type="text/css" rel="stylesheet"/>
                 }
 
                 <Nav />
                 <AlertsContainer />
                 <div className="container content">
                     <div className="row">
-                        <h1>{this.props.children.props.route.title}</h1>
-                        {this.props.children}
+                        <h1>{title}</h1>
+                        {children}
                     </div>
                 </div>
             </div>
