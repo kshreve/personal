@@ -1,10 +1,10 @@
 import React from 'react';
-import Router, {Route, Redirect, IndexRoute} from 'react-router';
+import Router, { Route, Redirect, IndexRoute } from 'react-router';
 
 import AppContainer from './views/AppContainer.jsx';
 import About from './views/about/About.jsx';
-import Blog from './views/blogs/Blog.jsx';
-import BlogPost from './views/blogs/BlogPost.jsx';
+import Blog from './views/blog/Blog.jsx';
+import BlogPost from './views/blog/BlogPost.jsx';
 import CrankingsContainer from './views/combinedRankings/CrankingsContainer.jsx';
 import CrankingsDataImportContainer from './views/combinedRankings/CrankingsDataImportContainer.jsx';
 import NotFound from './views/NotFound.jsx';
