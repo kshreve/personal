@@ -12,14 +12,14 @@ let appendQueryParameters = (url, queryParameters = []) => {
     return url;
 };
 
-export const get = (types, endpoint, queryParameters) => {
+export const get = (types, endpoint, queryParameters, shouldCallApi = (state) => true) => {
     let url = appendQueryParameters(endpoint, queryParameters);
 
     return {
-        types:         types,
-        shouldCallAPI: () => true,
-        fetchURL:      url,
-        fetchOptions:  {
+        types:        types,
+                      shouldCallApi,
+        fetchURL:     url,
+        fetchOptions: {
             method:  'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,14 +29,14 @@ export const get = (types, endpoint, queryParameters) => {
     };
 };
 
-export const post = (data, types, endpoint, queryParameters) => {
+export const post = (data, types, endpoint, queryParameters, shouldCallApi = (state) => true) => {
     let url = appendQueryParameters(endpoint, queryParameters);
 
     return {
-        types:         types,
-        shouldCallAPI: () => true,
-        fetchURL:      url,
-        fetchOptions:  {
+        types:        types,
+                      shouldCallApi,
+        fetchURL:     url,
+        fetchOptions: {
             method:  'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -44,21 +44,21 @@ export const post = (data, types, endpoint, queryParameters) => {
             },
             body:    JSON.stringify(data)
         },
-        payload:       data
+        payload:      data
     };
 };
 
-export const genericDelete = (data, types, endpoint, queryParameters) => {
+export const genericDelete = (data, types, endpoint, queryParameters, shouldCallApi = () => true) => {
     let url = appendQueryParameters(endpoint, queryParameters);
 
     return {
-        types:         types,
-        shouldCallAPI: () => true,
-        fetchURL:      url,
-        fetchOptions:  {
+        types:        types,
+                      shouldCallApi,
+        fetchURL:     url,
+        fetchOptions: {
             method: 'DELETE'
         },
-        payload:       data
+        payload:      data
     };
 };
 
