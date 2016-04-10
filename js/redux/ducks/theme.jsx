@@ -1,5 +1,5 @@
 import { post } from './../../convenience/functions.jsx';
-import { CUSTOM_THEME } from './../constants/endpoints.jsx';
+import { CUSTOM_THEME } from '../../constants/endpoints.jsx';
 
 const CREATE_CUSTOM_THEME_REQUEST = "CREATE_CUSTOM_THEME_REQUEST";
 const CREATE_CUSTOM_THEME_SUCCESS = "CREATE_CUSTOM_THEME_SUCCESS";

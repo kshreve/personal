@@ -1,5 +1,5 @@
 import { get, post, parseAndAddStrings } from './../../convenience/functions.jsx';
-import { MONGO_LAB } from './../constants/endpoints.jsx';
+import { MONGO_LAB } from '../../constants/endpoints.jsx';
 
 const GET_MONGO_LAB_DOCUMENTS_REQUEST = "GET_MONGO_LAB_DOCUMENTS_REQUEST";
 const GET_MONGO_LAB_DOCUMENTS_SUCCESS = "GET_MONGO_LAB_DOCUMENTS_SUCCESS";
@@ -8,6 +8,8 @@ const GET_MONGO_LAB_DOCUMENTS_FAIL = "GET_MONGO_LAB_DOCUMENTS_FAIL";
 const POST_MONGO_LAB_DOCUMENTS_REQUEST = "POST_MONGO_LAB_DOCUMENTS_REQUEST";
 const POST_MONGO_LAB_DOCUMENTS_SUCCESS = "POST_MONGO_LAB_DOCUMENTS_SUCCESS";
 const POST_MONGO_LAB_DOCUMENTS_FAIL = "POST_MONGO_LAB_DOCUMENTS_FAIL";
+
+const COLLECTION_NAME = 'Rankings';
 
 const initialState = {
     documents:   [],
@@ -51,5 +53,5 @@ export default (state = initialState, action = null) => {
     }
 };
 
-export const getRecords = () => (get([GET_MONGO_LAB_DOCUMENTS_REQUEST, GET_MONGO_LAB_DOCUMENTS_SUCCESS, GET_MONGO_LAB_DOCUMENTS_FAIL], MONGO_LAB));
-export const postDocuments = (data) => (post(data, [POST_MONGO_LAB_DOCUMENTS_REQUEST, POST_MONGO_LAB_DOCUMENTS_SUCCESS, POST_MONGO_LAB_DOCUMENTS_FAIL], MONGO_LAB));
+export const getRecords = () => (get([GET_MONGO_LAB_DOCUMENTS_REQUEST, GET_MONGO_LAB_DOCUMENTS_SUCCESS, GET_MONGO_LAB_DOCUMENTS_FAIL], MONGO_LAB(COLLECTION_NAME)));
+export const postDocuments = (data) => (post(data, [POST_MONGO_LAB_DOCUMENTS_REQUEST, POST_MONGO_LAB_DOCUMENTS_SUCCESS, POST_MONGO_LAB_DOCUMENTS_FAIL], MONGO_LAB(COLLECTION_NAME)));
