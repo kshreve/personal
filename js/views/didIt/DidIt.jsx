@@ -10,7 +10,7 @@ export default class DidIt extends BaseComponent {
     }
 
     componentDidMount() {
-        let {getDidIt} = this.props,
+        let {getDidIt, setPerson} = this.props,
             personId = localStorage.getItem(DID_IT);
 
         if (!personId) {
@@ -18,6 +18,16 @@ export default class DidIt extends BaseComponent {
             localStorage.setItem(DID_IT, personId);
         } else {
             getDidIt(personId);
+        }
+        
+        setPerson({id: personId, times: 0})
+    }
+
+    componentDidUpdate(previousProps, previousState) {
+        let {didIt: {person, personNotFound}, incrementDidIt} = this.props;
+
+        if (personNotFound && previousProps.didIt.personNotFound !== personNotFound) {
+            incrementDidIt(person);
         }
     }
 

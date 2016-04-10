@@ -8,11 +8,14 @@ export default connect(
         didIt: state.didIt
     }),
     (dispatch) => ({
+        setPerson:      (person) => dispatch(setPerson(person)),
         getDidIt:       (id) => dispatch(getDidIt(id)),
-        incrementDidIt: (person) => dispatch(
-            postDidIt(Object.assign({}, person, {
+        incrementDidIt: (person) => {
+            console.log(person);
+
+            /*dispatch(postDidIt(Object.assign({}, person, {
                 times: person.times + 1
-            }))
-        )
+            })))*/
+        }
     })
 )(DidIt);
