@@ -10,26 +10,24 @@ export default class DidIt extends BaseComponent {
     }
 
     componentDidMount() {
-        let { setPerson, getDidIt } = this.props,
-            didItCounter = localStorage.getItem(DID_IT);
+        let {getDidIt} = this.props,
+            personId = localStorage.getItem(DID_IT);
 
-        if (!didItCounter) {
-            let person = randomGuid();
-            setPerson(person);
-            localStorage.setItem(DID_IT, person);
+        if (!personId) {
+            personId = randomGuid();
+            localStorage.setItem(DID_IT, personId);
         } else {
-            setPerson(didItCounter.person);
-            getDidIt(didItCounter.person);
+            getDidIt(personId);
         }
     }
 
     render() {
-        let { didIt: { times }, postDidIt } = this.props;
+        let {didIt: {person: {times}}, incrementDidIt} = this.props;
 
         return (
             <div>
                 <div>You did it: {times}</div>
-                <button onClick={postDidIt}>I did it</button>
+                <button onClick={(person) => incrementDidIt(person)}>I did it</button>
             </div>
         );
     }

@@ -8,8 +8,11 @@ export default connect(
         didIt: state.didIt
     }),
     (dispatch) => ({
-        getDidIt:  () => dispatch(getDidIt()),
-        setPerson: (person) => dispatch(setPerson(person)),
-        postDidIt: () => dispatch(postDidIt())
+        getDidIt:       (id) => dispatch(getDidIt(id)),
+        incrementDidIt: (person) => dispatch(
+            postDidIt(Object.assign({}, person, {
+                times: person.times + 1
+            }))
+        )
     })
 )(DidIt);
