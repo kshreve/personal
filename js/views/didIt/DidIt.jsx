@@ -20,7 +20,7 @@ export default class DidIt extends BaseComponent {
             getDidIt(personId);
         }
 
-        setPerson({id: personId, times: 0})
+        setPerson({id: personId, times: 0});
     }
 
     componentDidUpdate(previousProps, previousState) {
@@ -36,13 +36,13 @@ export default class DidIt extends BaseComponent {
     }
 
     render() {
-        let {didIt: {person}} = this.props,
+        let {didIt: {person, processing}} = this.props,
             {times} = person;
 
         return (
             <div>
                 <div>You did it: {times}</div>
-                <button onClick={this.didIt}>I did it</button>
+                <button className="did-it__button" onClick={this.didIt} disabled={processing}>I did it</button>
             </div>
         );
     }

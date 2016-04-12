@@ -10,10 +10,8 @@ export default connect(
     (dispatch) => ({
         setPerson:      (person) => dispatch(setPerson(person)),
         getDidIt:       (id) => dispatch(getDidIt(id)),
-        incrementDidIt: (person) => {
-            dispatch(postDidIt(Object.assign({}, person, {
-                times: person.times + 1
-            })))
-        }
+        incrementDidIt: (person) => dispatch(postDidIt(Object.assign({}, person, {
+            times: person.times + 1
+        })))
     })
 )(DidIt);
