@@ -8,35 +8,35 @@ var gulp = require('gulp'),
 
 gulp.task('move', ['styles', 'fonts'], function () {
     return gulp.src(['assets/**.*'], {base: './'})
-        .pipe(flatten())
-        .pipe(gulp.dest('dist'))
-        .pipe(livereload());
+               .pipe(flatten())
+               .pipe(gulp.dest('dist'))
+               .pipe(livereload());
 });
 
 gulp.task('fonts', [], function () {
     return gulp.src(['assets/fonts/**.*'], {base: './assets'})
-        .pipe(gulp.dest('dist'))
-        .pipe(livereload());
+               .pipe(gulp.dest('dist'))
+               .pipe(livereload());
 });
 
 gulp.task('styles', function () {
     return gulp.src('styles/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(cleanCss())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('dist'));
+               .pipe(sass().on('error', sass.logError))
+               .pipe(cleanCss())
+               .pipe(rename({suffix: '.min'}))
+               .pipe(gulp.dest('dist'));
 });
 
 gulp.task('eslint', function () {
     return gulp.src(['js/**/*.jsx', 'server.js'])
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failOnError());
+               .pipe(eslint())
+               .pipe(eslint.format())
+               .pipe(eslint.failOnError());
 });
 
 gulp.task('watch', function () {
     livereload.listen();
-    gulp.watch(['styles/*.scss', 'views/**/*.jsx'], ['move', 'eslint']);
+    gulp.watch(['styles/*.scss', 'js/**/*.jsx'], ['move', 'eslint']);
 });
 
 gulp.task('default', ['move']);
