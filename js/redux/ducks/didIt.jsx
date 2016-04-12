@@ -11,6 +11,7 @@ const GET_DID_IT_FAIL = 'GET_DID_IT_FAIL';
 
 const SET_PERSON = 'SET_PERSON';
 const COLLECTION_NAME = 'DidIt';
+const PROPERTY_NAME = 'id';
 
 const initialState = {
     person:         {
@@ -35,8 +36,9 @@ export default (state = initialState, action = null) => {
                 }
             });
         case GET_DID_IT_SUCCESS:
-            return Object.assign({}, state, action.response, {
-                error: initialState.error
+            return Object.assign({}, state, {
+                person: action.response[0],
+                error:  initialState.error
             });
         case GET_DID_IT_FAIL:
             let personNotFound = false;
@@ -51,6 +53,7 @@ export default (state = initialState, action = null) => {
             });
         case POST_DID_IT_SUCCESS:
             return Object.assign({}, state, {
+                person:      action.response,
                 postSuccess: true,
                 error:       initialState.error
             });
@@ -74,5 +77,5 @@ export const setPerson = (person) => ({
           person
 });
 
-export const getDidIt = (id) => (get([GET_DID_IT_REQUEST, GET_DID_IT_SUCCESS, GET_DID_IT_FAIL], MONGO_LAB(COLLECTION_NAME, id)));
+export const getDidIt = (id) => (get([GET_DID_IT_REQUEST, GET_DID_IT_SUCCESS, GET_DID_IT_FAIL], MONGO_LAB(COLLECTION_NAME, PROPERTY_NAME, id)));
 export const postDidIt = (data) => post(data, [POST_DID_IT_REQUEST, POST_DID_IT_SUCCESS, POST_DID_IT_FAIL], MONGO_LAB(COLLECTION_NAME));

@@ -11,11 +11,9 @@ export default connect(
         setPerson:      (person) => dispatch(setPerson(person)),
         getDidIt:       (id) => dispatch(getDidIt(id)),
         incrementDidIt: (person) => {
-            console.log(person);
-
-            /*dispatch(postDidIt(Object.assign({}, person, {
+            dispatch(postDidIt(Object.assign({}, person, {
                 times: person.times + 1
-            })))*/
+            })))
         }
     })
 )(DidIt);

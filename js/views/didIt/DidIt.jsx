@@ -19,7 +19,7 @@ export default class DidIt extends BaseComponent {
         } else {
             getDidIt(personId);
         }
-        
+
         setPerson({id: personId, times: 0})
     }
 
@@ -31,13 +31,18 @@ export default class DidIt extends BaseComponent {
         }
     }
 
+    didIt() {
+        this.props.incrementDidIt(this.props.didIt.person);
+    }
+
     render() {
-        let {didIt: {person: {times}}, incrementDidIt} = this.props;
+        let {didIt: {person}} = this.props,
+            {times} = person;
 
         return (
             <div>
                 <div>You did it: {times}</div>
-                <button onClick={(person) => incrementDidIt(person)}>I did it</button>
+                <button onClick={this.didIt}>I did it</button>
             </div>
         );
     }
