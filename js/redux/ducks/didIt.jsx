@@ -18,6 +18,7 @@ const initialState = {
         id:    '',
         times: 0
     },
+    processing:     false,
     postSuccess:    false,
     personNotFound: false,
     error:          false
@@ -31,14 +32,16 @@ export default (state = initialState, action = null) => {
             });
         case GET_DID_IT_REQUEST:
             return Object.assign({}, state, {
-                person: {
+                person:     {
                     id: action.payload
-                }
+                },
+                processing: !initialState.processing
             });
         case GET_DID_IT_SUCCESS:
             return Object.assign({}, state, {
-                person: action.response[0],
-                error:  initialState.error
+                person:     action.response[0],
+                processing: initialState.processing,
+                error:      initialState.error
             });
         case GET_DID_IT_FAIL:
             let personNotFound = false;
@@ -48,23 +51,27 @@ export default (state = initialState, action = null) => {
             }
 
             return Object.assign({}, state, {
-                error: true,
-                       personNotFound
+                error:      true,
+                processing: initialState.processing,
+                            personNotFound
             });
         case POST_DID_IT_SUCCESS:
             return Object.assign({}, state, {
                 person:      action.response,
+                processing:  initialState.processing,
                 postSuccess: true,
                 error:       initialState.error
             });
         case POST_DID_IT_REQUEST:
             return Object.assign({}, state, {
                 postSuccess: initialState.postSuccess,
+                processing:  !initialState.processing,
                 error:       false
             });
         case POST_DID_IT_FAIL:
             return Object.assign({}, state, {
                 postSuccess: initialState.postSuccess,
+                processing:  initialState.processing,
                 error:       true
             });
         default:

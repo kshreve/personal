@@ -102,3 +102,9 @@ body {
     }
   }
 }
+
+.did-it__button {
+  &:disabled {
+    background-color: grey;
+  }
+}
