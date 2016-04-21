@@ -1,47 +1,32 @@
-var path              = require('path'),
-    webpack           = require('webpack'),
-    autoprefixer      = require('autoprefixer'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    sassLoaders       = [
-        'css-loader',
-        'postcss-loader',
-        'sass-loader'
-    ],
-    config            = {
-        entry: [
+var path = require('path'),
+    webpack = require('webpack'),
+    autoprefixer = require('autoprefixer'),
+    config = {
+        entry:   [
             'webpack-hot-middleware/client?reload=true',
             './js/client.jsx'
         ],
-        output: {
-            path: path.join(__dirname, 'dist'),
-            filename: 'bundle.js',
+        output:  {
+            path:       path.join(__dirname, 'dist'),
+            filename:   'bundle.js',
             publicPath: '/dist/'
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
-            new webpack.NoErrorsPlugin(),
-            new ExtractTextPlugin("styles.min.css")
+            new webpack.NoErrorsPlugin()
         ],
-        watch: true,
+        watch:   true,
         devtool: 'eval-source-map',
-        module: {
+        module:  {
             loaders: [
                 {
-                    test: /\.jsx?$/,
+                    test:    /\.jsx?$/,
                     include: path.join(__dirname, 'js'),
-                    loader: ['babel'],
-                    query: {
+                    loader:  ['babel'],
+                    query:   {
                         presets: ["react-hmre"]
                     }
-                },
-                /*                {
-                 test: /\.css$/,
-                 loader: ExtractTextPlugin.extract('style', 'css!postcss')
-                 },
-                 {
-                 test: /\.scss/,
-                 loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
-                 }*/
+                }
             ]
         },
         postcss: [
@@ -50,7 +35,7 @@ var path              = require('path'),
             })
         ],
         resolve: {
-            extensions: ['', '.js', '.jsx', '.scss'],
+            extensions:         ['', '.js', '.jsx', '.scss'],
             modulesDirectories: ['js', 'node_modules']
         }
     };
