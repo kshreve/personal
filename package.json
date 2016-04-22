@@ -47,7 +47,7 @@
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",
     "redux": "3.0.3",
-    "redux-form": "^4.2.2",
+    "redux-form": "^5.1.1",
     "redux-thunk": "1.0.0",
     "route-cache": "0.1.2",
     "webpack": "^1.12.9",
