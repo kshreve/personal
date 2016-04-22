@@ -8,7 +8,12 @@ module.exports = {
         filename: 'bundle.min.js'
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({ minimize: true })
+        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
+            }
+        })
     ],
     module:  {
         loaders: [
