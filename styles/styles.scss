@@ -108,3 +108,11 @@ body {
     background-color: grey;
   }
 }
+
+.fake-link {
+  color: #0080A8;
+
+  &:hover {
+    color: #0FA0CE;
+  }
+}

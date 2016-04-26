@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 
 import BaseComponent from './BaseComponent.jsx';
 import Routes from './../routes.jsx';
@@ -25,12 +25,18 @@ export default class Nav extends BaseComponent {
         }
     }
 
+    keyboardOpen(event) {
+        if (event.key === 'Enter') {
+            return this.openParentContainer();
+        }
+    }
+
     renderNavItem(route) {
-        let { parentContainerActiveClass } = this.state,
+        let {parentContainerActiveClass} = this.state,
             navItem = <li key={route.key} className="list-item-unstyled nav__item-container"><Link className="nav__item" to={`/${route.props.path}`} activeClassName="nav__item--active">{route.props.title}</Link></li>;
 
         if (!!route.props.hasChildren) {
-            navItem = (<li key={route.key} className="list-item-unstyled flexzone--reverse" onClick={this.openParentContainer}><a>Experiments <span className={`icon ${parentContainerActiveClass ? 'icon-circle-up' : 'icon-circle-down'}`}/></a>
+            navItem = (<li key={route.key} className="list-item-unstyled flexzone--reverse" onKeyPress={this.keyboardOpen} onClick={this.openParentContainer} tabIndex="0"><span className="fake-link">Experiments <span className={`icon ${parentContainerActiveClass ? 'icon-circle-up' : 'icon-circle-down'}`}/></span>
                 <ul className={`nav__item-parent-container ${parentContainerActiveClass}`}>
                     {
                         route.props.children.map((childRoute) => {
