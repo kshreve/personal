@@ -62,7 +62,8 @@
     "start": "node bootstrap.js",
     "postinstall": "npm run prod && npm run gulp",
     "prod": "npm run prod-scripts",
-    "prod-scripts": "NODE_ENV=production webpack -p --config webpack.production.config.js --progress --colorswebpack"
+    "prod-scripts": "NODE_ENV=production webpack -p --config webpack.production.config.js --progress --colorswebpack",
+    "test": "mocha test/**/*.js"
   },
   "author": "kshreve@gmail.com",
   "license": "MIT",
