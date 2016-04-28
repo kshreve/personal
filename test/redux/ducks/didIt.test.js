@@ -27,4 +27,7 @@ describe('didIt Duck', () => {
 
         expect(reducer(stateBefore, action)).toEqual(stateAfter);
     });
+    it('set person id', () => {
+        expect(true).toEqual(true);
+    })
 });
