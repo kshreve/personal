@@ -65,5 +65,10 @@
     "prod-scripts": "NODE_ENV=production webpack -p --config webpack.production.config.js --progress --colorswebpack"
   },
   "author": "kshreve@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "deep-freeze": "0.0.1",
+    "expect": "^1.18.0",
+    "mocha": "^2.4.5"
+  }
 }

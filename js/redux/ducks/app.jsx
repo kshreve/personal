@@ -1,8 +1,11 @@
-const GET_APP_REQUEST = "GET_APP_REQUEST";
-const GET_APP_SUCCESS = "GET_APP_SUCCESS";
-const GET_APP_FAIL = "GET_APP_FAIL";
+export const GET_APP_REQUEST = "GET_APP_REQUEST";
+export const GET_APP_SUCCESS = "GET_APP_SUCCESS";
+export const GET_APP_FAIL = "GET_APP_FAIL";
 
-const initialState = {};
+export const initialState = {
+    isError:    false,
+    isFetching: false
+};
 
 export default (state = initialState, action = null) => {
     switch (action.type) {
