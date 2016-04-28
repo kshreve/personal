@@ -1,8 +1,8 @@
 import React from 'react';
 
 import BaseComponent from './../../controls/BaseComponent.jsx';
-import { DID_IT } from './../../constants/strings.jsx';
-import { randomGuid } from './../../convenience/functions.jsx';
+import {DID_IT} from './../../constants/strings.jsx';
+import {randomGuid} from './../../convenience/functions.jsx';
 
 export default class DidIt extends BaseComponent {
     constructor(props) {
@@ -10,7 +10,7 @@ export default class DidIt extends BaseComponent {
     }
 
     componentDidMount() {
-        let {getDidIt, setPerson} = this.props,
+        let {getDidIt, setPersonId} = this.props,
             personId = localStorage.getItem(DID_IT);
 
         if (!personId) {
@@ -20,7 +20,7 @@ export default class DidIt extends BaseComponent {
             getDidIt(personId);
         }
 
-        setPerson({id: personId, times: 0});
+        setPersonId(personId);
     }
 
     componentDidUpdate(previousProps, previousState) {

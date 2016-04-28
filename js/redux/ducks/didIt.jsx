@@ -1,19 +1,19 @@
-import { post, get } from './../../convenience/functions.jsx';
-import { MONGO_LAB }from '../../constants/endpoints.jsx';
+import {post, get} from './../../convenience/functions.jsx';
+import {MONGO_LAB}from '../../constants/endpoints.jsx';
 
-const POST_DID_IT_REQUEST = 'POST_DID_IT_REQUEST';
-const POST_DID_IT_SUCCESS = 'POST_DID_IT_SUCCESS';
-const POST_DID_IT_FAIL = 'POST_DID_IT_FAIL';
+export const POST_DID_IT_REQUEST = 'POST_DID_IT_REQUEST';
+export const POST_DID_IT_SUCCESS = 'POST_DID_IT_SUCCESS';
+export const POST_DID_IT_FAIL = 'POST_DID_IT_FAIL';
 
-const GET_DID_IT_REQUEST = 'GET_DID_IT_REQUEST';
-const GET_DID_IT_SUCCESS = 'GET_DID_IT_SUCCESS';
-const GET_DID_IT_FAIL = 'GET_DID_IT_FAIL';
+export const GET_DID_IT_REQUEST = 'GET_DID_IT_REQUEST';
+export const GET_DID_IT_SUCCESS = 'GET_DID_IT_SUCCESS';
+export const GET_DID_IT_FAIL = 'GET_DID_IT_FAIL';
 
-const SET_PERSON = 'SET_PERSON';
-const COLLECTION_NAME = 'DidIt';
-const PROPERTY_NAME = 'id';
+export const SET_PERSON_ID = 'SET_PERSON_ID';
+export const COLLECTION_NAME = 'DidIt';
+export const PROPERTY_NAME = 'id';
 
-const initialState = {
+export const initialState = {
     person:         {
         id:    '',
         times: 0
@@ -26,9 +26,12 @@ const initialState = {
 
 export default (state = initialState, action = null) => {
     switch (action.type) {
-        case SET_PERSON:
+        case SET_PERSON_ID:
             return Object.assign({}, state, {
-                person: action.person
+                person: {
+                    id:    action.id,
+                    times: 0
+                }
             });
         case GET_DID_IT_REQUEST:
             return Object.assign({}, state, {
@@ -79,9 +82,9 @@ export default (state = initialState, action = null) => {
     }
 };
 
-export const setPerson = (person) => ({
-    type: SET_PERSON,
-          person
+export const setPersonId = (id) => ({
+    type: SET_PERSON_ID,
+          id
 });
 
 export const getDidIt = (id) => (get([GET_DID_IT_REQUEST, GET_DID_IT_SUCCESS, GET_DID_IT_FAIL], MONGO_LAB(COLLECTION_NAME, PROPERTY_NAME, id)));
