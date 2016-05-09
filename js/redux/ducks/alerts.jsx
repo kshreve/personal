@@ -1,5 +1,5 @@
-const ADD_ALERT = 'ADD_ALERT';
-const REMOVE_ALERT = 'REMOVE_ALERT';
+export const ADD_ALERT = 'ADD_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
 
 const initialState = [];
 

@@ -28,7 +28,7 @@ gulp.task('styles', function () {
 });
 
 gulp.task('eslint', function () {
-    return gulp.src(['js/**/*.jsx', 'server.js'])
+    return gulp.src(['js/**/*.jsx', 'test/**/*.test.js', 'server.js'])
                .pipe(eslint())
                .pipe(eslint.format())
                .pipe(eslint.failOnError());
@@ -36,7 +36,7 @@ gulp.task('eslint', function () {
 
 gulp.task('watch', function () {
     livereload.listen();
-    gulp.watch(['styles/*.scss', 'js/**/*.jsx'], ['move', 'eslint']);
+    gulp.watch(['styles/*.scss', 'js/**/*.jsx', 'test/**/*.test.js'], ['move', 'eslint']);
 });
 
 gulp.task('default', ['move']);
