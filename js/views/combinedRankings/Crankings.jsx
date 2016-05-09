@@ -17,7 +17,7 @@ export default class Crankings extends BaseComponent {
 
         return (
             <div>
-                <Link to="/crankingsData">Create Data</Link>
+                <Link to="/experiment/crankingsData">Create Data</Link>
                 <table className="crankings__table">
                     <thead>
                     <tr>
