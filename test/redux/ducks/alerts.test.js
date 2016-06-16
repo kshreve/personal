@@ -3,7 +3,7 @@ import {describe, before, it} from 'mocha';
 import expect from 'expect';
 import deepFreeze from 'deep-freeze';
 
-import reducer, {initialState, ADD_ALERT, REMOVE_ALERT}  from '../../../js/redux/ducks/alerts.jsx';
+import reducer, {initialState, ADD_ALERT, REMOVE_ALERT}  from '../../../js/redux/ducks/alerts';
 
 describe('alerts Duck', () => {
     it('Add Alert', () => {
