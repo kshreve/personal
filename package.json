@@ -2,12 +2,16 @@
     "name": "personal",
     "version": "1.0.0",
     "description": "personal website",
+    "main": "server.js",
+    "author": "kshreve@gmail.com",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "personal"
     },
-    "author": "kshreve@gmail.com",
-    "license": "MIT",
+    "engines": {
+        "node": "5.6.0"
+    },
     "scripts": {
         "start-message": "babel-node tools/startMessage.js",
         "prestart": "npm-run-all --parallel start-message remove-dist",
@@ -28,11 +32,7 @@
     },
     "dependencies": {
         "babel-polyfill": "^6.9.0",
-        "babel-types": "^6.10.0",
-        "cssnano": "^3.7.0",
-        "es6-promise": "^3.2.1",
         "isomorphic-fetch": "^2.2.1",
-        "kinetic": "^5.2.0",
         "localforage": "^1.4.2",
         "object-assign": "4.1.0",
         "react": "15.0.2",
@@ -45,7 +45,7 @@
         "redux-thunk": "^2.1.0"
     },
     "devDependencies": {
-        "babel-cli": "6.8.0",
+        "babel-cli": "^6.10.1",
         "babel-core": "6.8.0",
         "babel-loader": "6.2.4",
         "babel-plugin-react-display-name": "2.0.0",
