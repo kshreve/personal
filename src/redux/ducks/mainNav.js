@@ -31,11 +31,11 @@ const initialState = {
                     path:  '/didIt',
                     open:  false
                 },
-                {
-                    title: 'White Labeling',
-                    path:  '/whitelabel',
-                    open:  false
-                },
+                /* TODO: FIGURE OUT HOW TO BRING WHITELABELING BACK                {
+                                    title: 'White Labeling',
+                                    path:  '/whitelabel',
+                                    open:  false
+                                },*/
                 {
                     title: 'XKCD - 1335',
                     path:  '/xkcd1335',
