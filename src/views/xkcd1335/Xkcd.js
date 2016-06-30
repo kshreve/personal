@@ -5,22 +5,18 @@ import KineticJS from 'kinetic';
 import BaseComponent from './../../controls/BaseComponent';
 
 export default class Xkcd extends BaseComponent {
-    constructor(props) {
+    constructor (props) {
         super(props);
-
-        this.state = {
-            backgroundSource: '/background.png',
-            foregroundSource: '/foreground.png'
-        };
     }
 
-    componentDidMount() {
-        let backgroundSize = ReactDom.findDOMNode(this).offsetWidth,
-            {backgroundSource, foregroundSource} = this.state,
+    componentDidMount () {
+        let backgroundSize = ReactDom.findDOMNode(this).offsetWidth / 2,
+            backgroundSource = require('./../../../assets/background.png'),
+            foregroundSource = require('./../../../assets/foreground.png'),
             stage = new KineticJS.Stage({
                 container: 'kineticMount',
-                width: backgroundSize,
-                height: backgroundSize
+                width:     backgroundSize,
+                height:    backgroundSize
             }),
             backgroundLayer = new KineticJS.Layer(),
             foregroundLayer = new KineticJS.Layer(),
@@ -29,8 +25,8 @@ export default class Xkcd extends BaseComponent {
         backgroundImage.src = backgroundSource;
         backgroundImage.onload = () => {
             let backgroundKineticImage = new KineticJS.Image({
-                image: backgroundImage,
-                width: backgroundSize,
+                image:  backgroundImage,
+                width:  backgroundSize,
                 height: backgroundSize
             });
             backgroundLayer.add(backgroundKineticImage);
@@ -43,10 +39,10 @@ export default class Xkcd extends BaseComponent {
         foregroundImage.src = foregroundSource;
         foregroundImage.onload = () => {
             let foregroundKineticImage = new KineticJS.Image({
-                image: foregroundImage,
-                x: backgroundSize / 2,
-                y: backgroundSize / 2,
-                width: foregroundSize,
+                image:  foregroundImage,
+                x:      backgroundSize / 2,
+                y:      backgroundSize / 2,
+                width:  foregroundSize,
                 height: foregroundSize,
                 offset: {
                     x: foregroundSize / 2,
@@ -72,7 +68,7 @@ export default class Xkcd extends BaseComponent {
         };
     }
 
-    render() {
+    render () {
         return (
             <div>
                 <a href="https://xkcd.com/1335/">Link to Original</a>
