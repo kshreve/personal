@@ -1,4 +1,4 @@
-import {REHYDRATE} from 'redux-persist/constants';
+import { REHYDRATE } from 'redux-persist/constants';
 
 const TOGGLE_MENU = "TOGGLE_MENU";
 const TOGGLE_ITEM = "TOGGLE_ITEM";
@@ -46,7 +46,7 @@ const initialState = {
     ]
 };
 
-export default function reducer(state = initialState, action = null) {
+export default function reducer (state = initialState, action = null) {
     switch (action.type) {
         case REHYDRATE:
             return initialState;
@@ -56,7 +56,7 @@ export default function reducer(state = initialState, action = null) {
             });
         case TOGGLE_ITEM: {
             let items = state.items.map((item) => {
-                if (item === action.item) {
+                if (item === action.test) {
                     return Object.assign({}, item, {
                         open: !item.open
                     });
@@ -76,15 +76,15 @@ export default function reducer(state = initialState, action = null) {
     }
 }
 
-export function toggleMainMenu() {
+export function toggleMainMenu () {
     return {
         type: TOGGLE_MENU
     };
 }
 
-export function toggleItem(item) {
+export function toggleItem (item) {
     return {
         type: TOGGLE_ITEM,
-              item
+        test: item
     };
 }
