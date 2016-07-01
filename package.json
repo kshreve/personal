@@ -12,7 +12,7 @@
     "node": "5.6.0"
   },
   "scripts": {
-    "postinstall": "npm run build",
+    "postinstall": "npm run heroku",
     "start-message": "babel-node tools/startMessage.js",
     "prestartDev": "npm-run-all --parallel start-message remove-dist",
     "startDev": "npm-run-all --parallel test:watch open:src lint:watch",
@@ -26,6 +26,7 @@
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm run clean-dist && npm run build:html && npm run lint && npm run test",
     "build": "babel-node tools/build.js && npm run open:dist",
+    "heroku": "babel-node tools/build.js",
     "test": "mocha tools/testSetup.js \"test/**/*.spec.js\" --reporter progress",
     "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"test/**/*.spec.js\" --reporter progress",
     "test:cover:travis": "babel-node isparta cover --root src --report lcovonly _mocha -- --require ./tools/testSetup.js \"test/**/*.spec.js\" && cat ./coverage/lcov.info | coveralls.js",
