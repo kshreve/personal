@@ -12,6 +12,7 @@
     "node": "5.6.0"
   },
   "scripts": {
+    "postinstall": "npm run build",
     "start-message": "babel-node tools/startMessage.js",
     "prestart": "npm-run-all --parallel start-message remove-dist",
     "start": "npm-run-all --parallel test:watch open:src lint:watch",
