@@ -1,8 +1,6 @@
 import express from 'express';
 import path from 'path';
-import open from 'open';
 import routeCache from 'route-cache';
-import webpack from 'webpack';
 import cleanCss from 'gulp-clean-css';
 import gulp from 'gulp';
 import rename from 'gulp-rename';
@@ -10,36 +8,15 @@ import sass from 'gulp-sass';
 import fs from 'fs';
 import bodyParser from 'body-parser';
 
-import configureStore from './js/redux/configureStore.jsx';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import configureStore from './src/store/configureStore';
 
 let app = express();
 
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-if (process.env.NODE_ENV !== 'production') {
-    let config = require('./webpack.config'),
-        compiler = webpack(config);
-
-    app.use(webpackDevMiddleware(compiler, {
-        noInfo:     true,
-        publicPath: config.output.publicPath
-    }));
-
-    app.use(webpackHotMiddleware(compiler));
-}
-
-app.get('/*', routeCache.cacheSeconds(3600), (req, res, next) => {
-    let script = process.env.NODE_ENV !== 'production' ? '/dist/bundle.js' : '/bundle.min.js';
-
-    // create new store and initialize
-    const store = configureStore();
-
-    const initialState = store.getState();
-
+app.get('/*', routeCache.cacheSeconds(3600), (req, res) => {
     res.send(`
     <!doctype html>
     <html lang="en">
@@ -50,15 +27,16 @@ app.get('/*', routeCache.cacheSeconds(3600), (req, res, next) => {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Kevin Shreve</title>
         <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-75715107-1', 'auto');ga('send', 'pageview');</script>
-        <link href="/styles.min.css" type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="/theme.min.css" />
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body>
-        <div id="route-mount"></div>
+        <div id="app"></div>
         <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+          window.__INITIAL_STATE__ = ${JSON.stringify(configureStore().getState())};
         </script>
-        <script src=${script}></script>
+        <script src="/bundle.js"></script>
       </body>
     </html>
     `);
@@ -76,19 +54,19 @@ app.post('/customTheme', (req, res) => {
         }
     }
 
-    fs.writeFileSync('styles/theme/_customTheme.scss', sassToCreate, 'utf8', () => true);
+    fs.writeFileSync('src/styles/theme/_customTheme.scss', sassToCreate, 'utf8', () => true);
 
-    gulp.task('theme', () => {
-        return gulp.src('styles/theme/theme.scss')
-                   .pipe(sass().on('error', sass.logError))
-                   .pipe(cleanCss())
-                   .pipe(rename('theme.min.css'))
-                   .pipe(gulp.dest(`dist/${theme}`));
-    });
+    gulp.task('theme', () =>
+        gulp.src('src/styles/theme/theme.scss')
+            .pipe(sass().on('error', sass.logError))
+            .pipe(cleanCss())
+            .pipe(rename('theme.min.css'))
+            .pipe(gulp.dest(`dist/${theme}`))
+    );
 
-    gulp.start('theme', () => {
-        res.json({ message: 'Theme generated.' });
-    });
+    gulp.start('theme', () =>
+        res.json({message: 'Theme generated.'})
+    );
 });
 
 app.use(function (err, req, res, next) {
@@ -96,11 +74,4 @@ app.use(function (err, req, res, next) {
     next(err);
 });
 
-let serverPort = process.env.PORT || 80;
-
-app.listen(serverPort);
-
-if (process.env.NODE_ENV !== 'production') {
-    console.log(`Server is Up and Running at Port : ${serverPort}`);
-    open(`http://localhost:${serverPort}`);
-}
+app.listen(process.env.PORT || 80);

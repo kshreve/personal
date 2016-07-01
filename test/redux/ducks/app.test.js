@@ -3,7 +3,7 @@ import {describe, before, it} from 'mocha';
 import expect from 'expect';
 import deepFreeze from 'deep-freeze';
 
-import reducer, {initialState, GET_APP_REQUEST, GET_APP_SUCCESS, GET_APP_FAIL}  from '../../../js/redux/ducks/app.jsx';
+import reducer, {initialState, GET_APP_REQUEST, GET_APP_SUCCESS, GET_APP_FAIL}  from '../../../js/redux/ducks/app';
 
 describe('app Duck', () => {
     it('app request', () => {
