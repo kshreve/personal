@@ -48,7 +48,7 @@ export default class Nav extends BaseComponent {
                     {
                         items && items.map((item) => this.renderNavItem(item))
                     }
-                    {/*TODO: FIX THE RESUME LINK <li className="list-item-unstyled"><a className="nav__item" href={'/resume.pdf'}>Resume</a></li>*/}
+                        <li className="list-item-unstyled"><a className="nav__item" href={require('./../../assets/resume.pdf')}>Resume</a></li>
                 </ul>
             </nav>
         );
