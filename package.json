@@ -42,9 +42,7 @@
     "redux": "3.5.2",
     "redux-form": "^5.2.4",
     "redux-persist": "^3.2.2",
-    "redux-thunk": "^2.1.0"
-  },
-  "devDependencies": {
+    "redux-thunk": "^2.1.0",
     "babel-cli": "^6.10.1",
     "babel-core": "6.8.0",
     "babel-loader": "6.2.4",
