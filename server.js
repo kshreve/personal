@@ -32,7 +32,7 @@ app.get('/*', routeCache.cacheSeconds(3600), (req, res) => {
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body>
-        <div id="route-mount"></div>
+        <div id="app"></div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(configureStore().getState())};
         </script>
