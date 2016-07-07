@@ -9,6 +9,7 @@ import crankings from './ducks/crankings';
 import didIt from './ducks/didIt';
 import {reducer as form} from 'redux-form';
 import mainNav from './ducks/mainNav';
+import sudoku from './ducks/sudoku';
 import theme from './ducks/theme';
 
 export default combineReducers({
@@ -18,5 +19,6 @@ export default combineReducers({
     didIt,
     form,
     mainNav,
+    sudoku,
     theme
 });

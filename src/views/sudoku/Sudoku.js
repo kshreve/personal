@@ -9,9 +9,12 @@ export default class Sudoku extends BaseComponent {
 
 
     render () {
+        let {sudoku:{board}} = this.props;
+
         return (
             <div>
                 Sudoku
+                <div>{board}</div>
             </div>
         );
     }

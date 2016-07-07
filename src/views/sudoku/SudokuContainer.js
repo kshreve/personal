@@ -4,6 +4,8 @@ import Sudoku from './Sudoku';
 
 
 export default connect(
-    (state) => ({}),
+    (state) => ({
+        sudoku: state.sudoku
+    }),
     (dispatch) => ({})
 )(Sudoku);
