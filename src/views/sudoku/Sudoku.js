@@ -7,14 +7,40 @@ export default class Sudoku extends BaseComponent {
         super(props);
     }
 
+    componentDidMount () {
+        let { sudoku:{ initialBoard }, massageBoard } = this.props;
+
+        return massageBoard(initialBoard);
+    }
+
+    checkRegion (square) {
+        return false;
+    }
+
+    checkColumn (square) {
+        return this.props.sudoku.board.filter((item) => item.column === square.column && item.content === square.content).length === 1;
+    }
+
+    checkRow (square) {
+        return this.props.sudoku.board.filter((item) => item.row === square.row && item.content === square.content).length === 1;
+    }
+
+    checkValidity (square) {
+        let valid = this.checkRow(square) && this.checkColumn(square) && this.checkRegion(square);
+        console.log(valid);
+        return valid;
+    }
 
     render () {
-        let {sudoku:{board}} = this.props;
+        let { sudoku:{ board } } = this.props,
+            squares = board.map((square, i) => <div className="sudoku__square" key={i} onClick={() => this.checkValidity(square)}>{square.content} - {square.region}</div>);
+
 
         return (
-            <div>
-                Sudoku
-                <div>{board}</div>
+            <div className="sudoku">
+                <div className="sudoku__board">
+                    {squares}
+                </div>
             </div>
         );
     }

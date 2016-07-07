@@ -1,0 +1,33 @@
+.sudoku {
+
+}
+
+.sudoku__board {
+    display: flex;
+    flex-flow: row wrap;
+    width: 500px;
+}
+
+.sudoku__square {
+    width: 33px;
+    height: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: lavenderblush;
+    font-weight: bold;
+    font-size: xx-small;
+    border-color: black;
+
+    &:nth-child(3n) {
+        border-right: solid;
+    }
+
+    &:nth-child(9n) {
+        border-right: none;
+    }
+
+    &:nth-child(n+19):nth-child(-n+27),
+    &:nth-child(n+46):nth-child(-n+54) {
+        border-bottom: solid;
+    }
+}
