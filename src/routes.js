@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import {Route, IndexRoute} from 'react-router';
 
 import AppContainer from './views/AppContainer';
 import About from './views/about/About';
@@ -9,6 +9,7 @@ import CrankingsContainer from './views/combinedRankings/CrankingsContainer';
 import CrankingsDataImportContainer from './views/combinedRankings/CrankingsDataImportContainer';
 import DidItContainer from './views/didIt/DidItContainer';
 import NotFound from './views/NotFound';
+import SudokuContainer from './views/sudoku/SudokuContainer';
 import WhiteLabelContainer from './views/whitelabel/WhiteLabelContainer';
 import Xkcd from './views/xkcd1335/Xkcd';
 
@@ -23,6 +24,7 @@ export default [
             <Route key="crankingsData" path="crankingsData" component={CrankingsDataImportContainer}/>
             <Route key="didIt" path="didIt" component={DidItContainer}/>
             <Route key="whitelabel" path="whitelabel" component={WhiteLabelContainer}/>
+            <Route key="sudoku" path="sudoku" component={SudokuContainer}/>
             <Route key="xkcd1335" path="xkcd1335" component={Xkcd}/>
         </Route>
 

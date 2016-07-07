@@ -40,6 +40,11 @@ const initialState = {
                     title: 'XKCD - 1335',
                     path:  '/xkcd1335',
                     open:  false
+                },
+                {
+                    title: 'sudoku',
+                    path:  '/sudoku',
+                    open:  false
                 }
             ]
         }
