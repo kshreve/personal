@@ -21,11 +21,15 @@ export default function reducer (state = initialState, action = null) {
     switch (action.type) {
         case MASSAGE_BOARD:
             let board = action.board.map((square, i) => {
+                let row = Math.floor(i / 9),
+                    column = i % 9,
+                    region = (Math.floor(row / 3) * 3) + Math.floor(column / 3);
+
                 return {
                     content: square,
-                    row:     Math.floor(i / 9),
-                    column:  i % 9,
-                    region:  i
+                             row,
+                             column,
+                    region:  region
                 };
             });
             return Object.assign({}, state, {

@@ -14,7 +14,7 @@ export default class Sudoku extends BaseComponent {
     }
 
     checkRegion (square) {
-        return false;
+        return this.props.sudoku.board.filter((item) => item.region === square.region && item.content === square.content).length === 1;
     }
 
     checkColumn (square) {
@@ -33,7 +33,7 @@ export default class Sudoku extends BaseComponent {
 
     render () {
         let { sudoku:{ board } } = this.props,
-            squares = board.map((square, i) => <div className="sudoku__square" key={i} onClick={() => this.checkValidity(square)}>{square.content} - {square.region}</div>);
+            squares = board.map((square, i) => <div className="sudoku__square" key={i} onClick={() => this.checkValidity(square)}>{square.content}</div>);
 
 
         return (
