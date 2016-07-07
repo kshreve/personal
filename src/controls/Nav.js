@@ -19,11 +19,15 @@ export default class Nav extends BaseComponent {
     }
 
     renderNavItem (item) {
-        let { toggleItem } = this,
-            navItem = <li key={item.title} className="list-item-unstyled nav__item-container"><Link className="nav__item" to={item.path} activeClassName="nav__item--active">{item.title}</Link></li>;
+        let { toggleItem } = this;
+
+        let navItem = (<li key={item.title} className="list-item-unstyled nav__item-container" onKeyPress={(e) => this.keyboardOpen(e, item)} onClick={() => toggleItem(item)}>
+            <Link className="nav__item" to={item.path} activeClassName="nav__item--active">{item.title}</Link>
+        </li>);
 
         if (item.items && item.items.length > 0) {
-            navItem = (<li key={item.title} className="list-item-unstyled flexzone--reverse" onKeyPress={(e) => this.keyboardOpen(e, item)} onClick={() => toggleItem(item)} tabIndex="0"><span className="fake-link">Experiments <span className={`icon ${item.open ? 'icon-circle-up' : 'icon-circle-down'}`}/></span>
+            navItem = (<li key={item.title} className="list-item-unstyled flexzone--reverse" onKeyPress={(e) => this.keyboardOpen(e, item)} onClick={() => toggleItem(item)} tabIndex="0">
+                <span className="fake-link">Experiments <span className={`icon ${item.open ? 'icon-circle-up' : 'icon-circle-down'}`}/></span>
                 <ul className={`nav__item-parent-container ${item.open && 'nav__item-parent-container--active'}`}>
                     {
                         item.items.map((childRoute) =>
@@ -48,7 +52,7 @@ export default class Nav extends BaseComponent {
                     {
                         items && items.map((item) => this.renderNavItem(item))
                     }
-                        <li className="list-item-unstyled"><a className="nav__item" href={require('./../../assets/resume.pdf')}>Resume</a></li>
+                    <li className="list-item-unstyled"><a className="nav__item" href={require('./../../assets/resume.pdf')}>Resume</a></li>
                 </ul>
             </nav>
         );
