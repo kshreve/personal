@@ -92,7 +92,8 @@ export default function reducer (state = initialState, action = null) {
                     if (invalidSquares.includes(square)) {
                         return Object.assign({}, square, { valid: false });
                     }
-                    return square;
+
+                    return Object.assign({}, square, { valid: true });
                 });
 
             return Object.assign({}, state, {
