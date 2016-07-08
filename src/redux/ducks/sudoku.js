@@ -34,6 +34,7 @@ export default function reducer (state = initialState, action = null) {
                              region
                 };
             });
+            
             return Object.assign({}, state, {
                 board
             });
@@ -53,10 +54,17 @@ export default function reducer (state = initialState, action = null) {
             });
         }
         case IS_BOARD_VALID: {
-            let valid = state.board.map((square) => !checkValidity(square, state.board) && square).filter((valid) => valid).length === 0;
+            let invalidSquares = state.board.map((square) => !checkValidity(square, state.board) && square).filter((valid) => valid),
+                newBoardWithInvalids = state.board.map((square) => {
+                    if (invalidSquares.includes(square)) {
+                        return Object.assign({}, square, { valid: false });
+                    }
+                    return square;
+                });
 
             return Object.assign({}, state, {
-                valid
+                valid: invalidSquares.length === 0,
+                board: newBoardWithInvalids
             });
         }
         default:

@@ -32,10 +32,18 @@
     }
 }
 
-.sudoku__square--valid {
+.sudoku__square-number--valid {
 
 }
 
-.sudoku__square--invalid {
+.sudoku__square-number--invalid {
     color: red;
+}
+
+.sudoku__winner-button {
+
+}
+
+.sudoku__winner-button:disabled {
+    background-color: darkgray;
 }
