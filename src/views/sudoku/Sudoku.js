@@ -14,9 +14,10 @@ export default class Sudoku extends BaseComponent {
     }
 
     render () {
-        const { sudoku:{ board, valid } } = this.props;
+        const { sudoku:{ board, valid }, isSquareValid } = this.props;
 
-        let squares = board.map((square, i) => <div className="sudoku__square" key={i}>{square.content}</div>);
+
+        let squares = board.map((square, i) => <div className={`sudoku__square ${square.valid ? 'sudoku__square--valid' : 'sudoku__square--invalid'}`} key={i} onClick={() => isSquareValid(square)}>{square.content}</div>);
 
         return (
             <div className="sudoku">

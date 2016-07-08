@@ -31,3 +31,11 @@
         border-bottom: solid;
     }
 }
+
+.sudoku__square--valid {
+
+}
+
+.sudoku__square--invalid {
+    color: red;
+}

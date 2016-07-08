@@ -1,5 +1,6 @@
 const MASSAGE_BOARD = 'MASSAGE_BOARD';
 const IS_BOARD_VALID = 'IS_BOARD_VALID';
+const IS_SQUARE_VALID = 'IS_SQUARE_VALID';
 
 const initialState = {
     initialBoard: [
@@ -27,13 +28,28 @@ export default function reducer (state = initialState, action = null) {
 
                 return {
                     content: square,
+                    valid:   true,
                              row,
                              column,
-                    region:  region
+                             region
                 };
             });
             return Object.assign({}, state, {
                 board
+            });
+        }
+        case IS_SQUARE_VALID: {
+            let newBoard = state.board.map((square) => {
+                if (square === action.square) {
+                    return Object.assign({}, square, {
+                        valid: checkValidity(action.square, state.board)
+                    });
+                }
+                return square;
+            });
+
+            return Object.assign({}, state, {
+                board: newBoard
             });
         }
         case IS_BOARD_VALID: {
@@ -77,4 +93,9 @@ export const massageBoard = () => ({
 
 export const isBoardValid = () => ({
     type: IS_BOARD_VALID
+});
+
+export const isSquareValid = (square) => ({
+    type: IS_SQUARE_VALID,
+          square
 });
