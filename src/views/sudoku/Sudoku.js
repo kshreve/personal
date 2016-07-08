@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { makepuzzle as makeBoard, solvepuzzle as solveBoard } from 'sudoku';
 import BaseComponent from './../../controls/BaseComponent';
 import SudokuSquareContainer from './SudokuSquareContainer';
+
 
 export default class Sudoku extends BaseComponent {
     constructor (props) {
@@ -11,11 +13,11 @@ export default class Sudoku extends BaseComponent {
     componentDidMount () {
         let { massageBoard } = this.props;
 
-        return massageBoard();
+        return massageBoard(makeBoard());
     }
 
     render () {
-        const { sudoku:{ board, valid }, isBoardValid } = this.props;
+        const { sudoku:{ initialBoard, board, valid }, isBoardValid } = this.props;
 
         return (
             <div className="sudoku">
@@ -24,6 +26,7 @@ export default class Sudoku extends BaseComponent {
                 </div>
 
                 <button className="sudoku__winner-button" onClick={isBoardValid} disabled={valid}>{!valid ? `Winner?` : 'Winner!'}</button>
+                <button onClick={() => this.props.massageBoard(solveBoard(initialBoard))}>Solve Board</button>
             </div>
         );
     }

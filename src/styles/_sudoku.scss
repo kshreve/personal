@@ -16,14 +16,14 @@
     background-color: lavenderblush;
     font-weight: bold;
     font-size: xx-small;
-    border-color: black;
+    border: 1px solid black;
 
     &:nth-child(3n) {
         border-right: solid;
     }
 
     &:nth-child(9n) {
-        border-right: none;
+        border-right: 1px solid black;
     }
 
     &:nth-child(n+19):nth-child(-n+27),
