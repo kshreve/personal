@@ -13,11 +13,11 @@ export default class Sudoku extends BaseComponent {
     componentDidMount () {
         let { massageBoard } = this.props;
 
-        return massageBoard(makeBoard());
+        return massageBoard(makeBoard(), true);
     }
 
     render () {
-        const { sudoku:{ initialBoard, board, valid }, isBoardValid } = this.props;
+        const { sudoku:{ initialBoard, board, valid }, isBoardValid, massageBoard } = this.props;
 
         return (
             <div className="sudoku">
@@ -25,8 +25,9 @@ export default class Sudoku extends BaseComponent {
                     {board.map((square, i) => <SudokuSquareContainer key={i} square={square}/>)}
                 </div>
 
-                <button className="sudoku__winner-button" onClick={isBoardValid} disabled={valid}>{!valid ? `Winner?` : 'Winner!'}</button>
-                <button onClick={() => this.props.massageBoard(solveBoard(initialBoard))}>Solve Board</button>
+                <button className="sudoku__button sudoku__button--winner" onClick={isBoardValid} disabled={valid}>{!valid ? `Winner?` : 'Winner!'}</button>
+                <button className="sudoku__button sudoku__button--solve" onClick={() => massageBoard(solveBoard(initialBoard))} disabled={valid}>Solve Board</button>
+                <button className="sudoku__button sudoku__button--new" onClick={() => massageBoard(makeBoard(), true)}>New Board</button>
             </div>
         );
     }

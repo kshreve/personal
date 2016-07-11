@@ -8,7 +8,7 @@ export default connect(
         sudoku: state.sudoku
     }),
     (dispatch) => ({
-        massageBoard: (board) => dispatch(massageBoard(board)),
+        massageBoard: (board, newBoard) => dispatch(massageBoard(board, newBoard)),
         isBoardValid: () => dispatch(isBoardValid())
     })
 )(Sudoku);

@@ -44,10 +44,22 @@
     color: red;
 }
 
-.sudoku__winner-button {
+.sudoku__button {
 
 }
 
-.sudoku__winner-button:disabled {
+.sudoku__button:disabled {
     background-color: darkgray;
+}
+
+.sudoku__button--winner {
+
+}
+
+.sudoku__button--solve {
+
+}
+
+.sudoku__button--new {
+
 }

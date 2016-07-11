@@ -15,13 +15,14 @@ export default function reducer (state = initialState, action = null) {
         case MASSAGE_BOARD: {
             let board = action.board.map((square, i) => {
                 let row = Math.floor(i / 9),
+                    content = parseInt(square, 10) >= 0 ? square + 1 : null,
                     column = i % 9,
                     region = (Math.floor(row / 3) * 3) + Math.floor(column / 3);
 
                 return {
-                    content: square,
                     valid:   true,
                     editing: false,
+                             content,
                              row,
                              column,
                              region
@@ -30,6 +31,7 @@ export default function reducer (state = initialState, action = null) {
 
             return Object.assign({}, state, {
                 initialBoard: action.board,
+                valid:        action.newBoard ? !action.newBoard : false,
                               board
             });
         }
@@ -117,12 +119,13 @@ const checkRow = (square, board) => {
 };
 
 const checkValidity = (square, board) => {
-    return checkRow(square, board) && checkColumn(square, board) && checkRegion(square, board);
+    return square.content > 0 && square.content < 10 && checkRow(square, board) && checkColumn(square, board) && checkRegion(square, board);
 };
 
-export const massageBoard = (board) => ({
+export const massageBoard = (board, newBoard) => ({
     type: MASSAGE_BOARD,
-          board
+          board,
+          newBoard
 });
 
 export const isBoardValid = () => ({
