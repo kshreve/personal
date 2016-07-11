@@ -20,8 +20,8 @@ export default class SudokuSquare extends BaseComponent {
         const { square, editSquareContent, toggleEditSquare } = this.props;
 
         return (
-            <div className="sudoku__square" onClick={() => toggleEditSquare(square)}>
-                {square.editing && <input pattern="[0-9]" className="sudoku__square-input" defaultValue={square.content} onBlur={(e) => editSquareContent(square, parseInt(e.target.value, 10)) && toggleEditSquare(square)}/>}
+            <div className="sudoku__square" onClick={() => !square.editing && toggleEditSquare(square)}>
+                {square.editing && <input pattern="[0-9]" maxLength="1" className="sudoku__square-input" defaultValue={square.content} onBlur={(e) => editSquareContent(square, parseInt(e.target.value, 10)) && toggleEditSquare(square)}/>}
                 {!square.editing && <span className={`${square.valid ? 'sudoku__square-number--valid' : 'sudoku__square-number--invalid'}`}>{square.content}</span>}
             </div>
         );

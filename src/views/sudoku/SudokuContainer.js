@@ -9,6 +9,6 @@ export default connect(
     }),
     (dispatch) => ({
         massageBoard: (board) => dispatch(massageBoard(board)),
-        isBoardValid: () => dispatch(isBoardValid()),
+        isBoardValid: () => dispatch(isBoardValid())
     })
 )(Sudoku);
