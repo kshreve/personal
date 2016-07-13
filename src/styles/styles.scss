@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'font';
 @import 'sudoku';
+@import '_guessing-game.scss';
 
 body {
     background-color: $primary;
