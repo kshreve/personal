@@ -12,8 +12,8 @@ import configureStore from './src/store/configureStore';
 
 let app = express();
 
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/*', routeCache.cacheSeconds(3600), (req, res) => {
@@ -65,13 +65,36 @@ app.post('/customTheme', (req, res) => {
     );
 
     gulp.start('theme', () =>
-        res.json({message: 'Theme generated.'})
+        res.json({ message: 'Theme generated.' })
     );
 });
 
 app.use(function (err, req, res, next) {
     console.error(err.stack);
     next(err);
+});
+
+const allowCrossDomain = (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+        res.sendStatus(200);
+    }
+    else {
+        next();
+    }
+};
+
+app.use(allowCrossDomain);
+
+app.get('/guessingGame', (req, res) => {
+    res.json({
+        gameId:    0,
+        situation: [1, 1, 0, 0, 0, 0]
+    });
 });
 
 app.listen(process.env.PORT || 80);

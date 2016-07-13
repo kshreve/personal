@@ -15,9 +15,13 @@ export default class GuessingGame extends BaseComponent {
         let { guessingGame: { situation, gameId } } = this.props;
 
         return (
-            <div>
-                Situation: {situation}
-                Game ID : {gameId}
+            <div className="guessing-game">
+                <h3>Game ID: {gameId}</h3>
+                <div className="guessing-game__situation">
+                    {situation && situation.map(x =>
+                        <div className="guessing-game__situation-item">{x > 0 ? 'X' : 'O'}</div>
+                    )}
+                </div>
             </div>
         );
     }

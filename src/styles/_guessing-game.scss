@@ -3,5 +3,10 @@
 }
 
 .guessing-game__situation {
+    display: flex;
+    justify-content: space-around;
+}
 
+.guessing-game__situation-item {
+    border: 1px dashed black;
 }
