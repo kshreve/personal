@@ -32,6 +32,11 @@ const initialState = {
                     open:  false
                 },
                 {
+                    title: 'Guessing Game',
+                    path:  '/guessinggame',
+                    open:  false
+                },
+                {
                     title: 'White Labeling',
                     path:  '/whitelabel',
                     open:  false
