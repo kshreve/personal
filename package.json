@@ -14,7 +14,7 @@
   "scripts": {
     "postinstall": "npm run heroku",
     "start-message": "babel-node tools/startMessage.js",
-    "prestartDev": "npm-run-all --parallel start-message remove-dist",
+    "prestartDev": "npm-run-all --parallel start-message",
     "startDev": "npm-run-all --parallel test:watch open:src lint:watch",
     "start": "node bootstrap.js",
     "open:src": "babel-node tools/srcServer.js",
