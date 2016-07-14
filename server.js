@@ -1,3 +1,4 @@
+/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import express from 'express';
 import path from 'path';
 import routeCache from 'route-cache';
@@ -22,7 +23,7 @@ const allowCrossDomain = (req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
     // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
+    if ('OPTIONS' === req.method) {
         res.sendStatus(200);
     }
     else {
@@ -32,7 +33,7 @@ const allowCrossDomain = (req, res, next) => {
 
 app.use(allowCrossDomain);
 
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
     console.error(err.stack);
     next(err);
 });
