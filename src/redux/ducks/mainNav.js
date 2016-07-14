@@ -4,7 +4,6 @@ const TOGGLE_MENU = "TOGGLE_MENU";
 const TOGGLE_ITEM = "TOGGLE_ITEM";
 
 const initialState = {
-    open:  true,
     items: [
         {
             title: 'About',
@@ -59,7 +58,7 @@ const initialState = {
 export default function reducer (state = initialState, action = null) {
     switch (action.type) {
         case REHYDRATE:
-            return initialState;
+            return Object.assign({}, initialState);
         case TOGGLE_MENU:
             return Object.assign({}, state, {
                 open: !state.open
@@ -84,12 +83,6 @@ export default function reducer (state = initialState, action = null) {
         default:
             return state;
     }
-}
-
-export function toggleMainMenu () {
-    return {
-        type: TOGGLE_MENU
-    };
 }
 
 export function toggleItem (item) {
