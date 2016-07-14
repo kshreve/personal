@@ -1,5 +1,7 @@
-import {post, get} from './../../convenience/functions';
-import {MONGO_LAB}from './../constants/endpoints';
+import { REHYDRATE } from 'redux-persist/constants';
+
+import { post, get, randomGuid } from './../../convenience/functions';
+import { MONGO_LAB }from './../constants/endpoints';
 
 export const POST_DID_IT_REQUEST = 'POST_DID_IT_REQUEST';
 export const POST_DID_IT_SUCCESS = 'POST_DID_IT_SUCCESS';
@@ -26,10 +28,18 @@ export const initialState = {
 
 export default (state = initialState, action = null) => {
     switch (action.type) {
+        case REHYDRATE: {
+            let incoming = action.payload.didIt;
+            if (incoming) {
+                return Object.assign({}, state, incoming);
+            }
+
+            return state;
+        }
         case SET_PERSON_ID:
             return Object.assign({}, state, {
                 person: {
-                    id:    action.id,
+                    id:    randomGuid(),
                     times: 0
                 }
             });
@@ -83,9 +93,8 @@ export default (state = initialState, action = null) => {
     }
 };
 
-export const setPersonId = (id) => ({
-    type: SET_PERSON_ID,
-          id
+export const setPersonId = () => ({
+    type: SET_PERSON_ID
 });
 
 export const getDidIt = (id) => (get([GET_DID_IT_REQUEST, GET_DID_IT_SUCCESS, GET_DID_IT_FAIL], MONGO_LAB(COLLECTION_NAME, PROPERTY_NAME, id)));
