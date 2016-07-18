@@ -7,30 +7,13 @@ export default class DidIt extends BaseComponent {
         super(props);
     }
 
-    componentDidMount () {
-        let { didIt:{ person:{ id } }, setPersonId } = this.props;
-
-        if (!id) {
-            setPersonId();
-        }
-    }
-
-    componentDidUpdate (previousProps) {
-        let { didIt: { person, personNotFound }, incrementDidIt } = this.props;
-
-        if (personNotFound && previousProps.didIt.personNotFound !== personNotFound) {
-            incrementDidIt(person);
-        }
-    }
-
     render () {
-        let { didIt: { person, processing }, incrementDidIt } = this.props,
-            { times } = person;
+        let { didIt: { processing, times }, id, incrementDidIt } = this.props;
 
         return (
             <div>
                 <div>You did it: {times}</div>
-                <button className="did-it__button" onClick={() => incrementDidIt(person)} disabled={processing}>I did it</button>
+                <button className="did-it__button" onClick={() => incrementDidIt(id, times)} disabled={processing}>I did it</button>
             </div>
         );
     }
