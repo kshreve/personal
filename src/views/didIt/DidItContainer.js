@@ -10,7 +10,7 @@ export default connect(
     }),
     (dispatch) => ({
         incrementDidIt: (id, times) => dispatch(postDidIt(Object.assign({}, {
-            id:    id,
+            _id:   id,
             times: times + 1
         })))
     })
