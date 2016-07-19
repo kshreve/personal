@@ -52,4 +52,11 @@ export default (state = initialState, action = null) => {
     }
 };
 
-export const postDidIt = (data) => post(data, [POST_DID_IT_REQUEST, POST_DID_IT_SUCCESS, POST_DID_IT_FAIL], MONGO_LAB(COLLECTION_NAME));
+export const postDidIt = (id, times) => {
+    let data = {
+        _id: id,
+             times
+    };
+
+    post(data, [POST_DID_IT_REQUEST, POST_DID_IT_SUCCESS, POST_DID_IT_FAIL], MONGO_LAB(COLLECTION_NAME));
+};

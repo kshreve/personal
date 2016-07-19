@@ -8,10 +8,7 @@ export default connect(
         didIt: state.didIt,
         id:    state.app.id
     }),
-    (dispatch) => ({
-        incrementDidIt: (id, times) => dispatch(postDidIt(Object.assign({}, {
-            _id:   id,
-            times: times + 1
-        })))
-    })
+    {
+        incrementDidIt: postDidIt
+    }
 )(DidIt);

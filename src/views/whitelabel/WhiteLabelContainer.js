@@ -14,8 +14,8 @@ export default reduxForm({
     (state) => ({
         theme: state.theme
     }),
-    (dispatch) => ({
-        createCustomTheme: (data) => dispatch(createCustomTheme(data)),
-        addAlert:          (alert) => dispatch(addAlert(alert))
-    })
+    {
+        createCustomTheme: createCustomTheme,
+        addAlert:          addAlert
+    }
 )(WhiteLabel);

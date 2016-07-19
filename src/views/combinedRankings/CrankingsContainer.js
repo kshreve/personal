@@ -7,7 +7,7 @@ export default connect(
     (state) => ({
         crankings: state.crankings
     }),
-    (dispatch) => ({
-        getRecords: ()=> (dispatch(getRecords()))
-    })
+    {
+        getRecords: getRecords
+    }
 )(Crankings);

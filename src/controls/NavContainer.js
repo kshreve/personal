@@ -1,13 +1,11 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from './Nav';
-import {toggleItem} from './../redux/ducks/mainNav';
+import { toggleItem } from './../redux/ducks/mainNav';
 
 export default connect(
-    (state) => ({
+    (state, ownProps) => ({
         mainNav: state.mainNav
     }),
-    (dispatch) => ({
-        toggleItem: (item)=> dispatch(toggleItem(item))
-    })
+    { toggleItem: toggleItem }
 )(Nav);

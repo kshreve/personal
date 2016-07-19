@@ -5,9 +5,9 @@ import { isSquareValid, toggleEditSquare, editSquareContent } from './../../redu
 
 export default connect(
     () => ({}),
-    (dispatch) => ({
-        isSquareValid:     (square) => dispatch(isSquareValid(square)),
-        toggleEditSquare:  (square) => dispatch(toggleEditSquare(square)),
-        editSquareContent: (square, content) => dispatch(editSquareContent(square, content))
-    })
+    {
+        isSquareValid:     isSquareValid,
+        toggleEditSquare:  toggleEditSquare,
+        editSquareContent: editSquareContent
+    }
 )(SudokuSquare);

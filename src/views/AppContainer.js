@@ -8,7 +8,5 @@ export default connect(
         app:   state.app,
         theme: state.theme
     }),
-    (dispatch)=> ({
-        setPersonId: () => dispatch(setPersonId())
-    })
+    { setPersonId: setPersonId }
 )(App);

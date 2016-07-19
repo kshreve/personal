@@ -7,7 +7,7 @@ export default connect(
     (state) => ({
         guessingGame: state.guessingGame
     }),
-    (dispatch) => ({
-        getGame: () => dispatch(getGame())
-    })
+    {
+        getGame: getGame
+    }
 )(GuessingGame);

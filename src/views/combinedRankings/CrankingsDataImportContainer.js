@@ -14,8 +14,8 @@ export default reduxForm({
     (state) => ({
         postSuccess: state.crankings.postSuccess
     }),
-    (dispatch) => ({
-        postDocuments: (data) => dispatch(postDocuments(data)),
-        addAlert:      (alert) => dispatch(addAlert(alert))
-    })
+    {
+        postDocuments: postDocuments,
+        addAlert:      addAlert
+    }
 )(CrankingsDataImport);
