@@ -16,7 +16,7 @@ export default class WhiteLabel extends BaseComponent {
     }
 
     render() {
-        let { fields: { theme, primary, secondary, accentOne, accentTwo }, handleSubmit, submitting, createCustomTheme, clearTheme } = this.props;
+        let { fields: { theme, primary, secondary, accentOne, accentTwo }, theme:{ name }, handleSubmit, submitting, createCustomTheme, clearTheme } = this.props;
 
         return (
             <form onSubmit={handleSubmit(createCustomTheme)}>
@@ -26,7 +26,7 @@ export default class WhiteLabel extends BaseComponent {
                 <Input type="text" field={accentOne} label="Accent One Color"/>
                 <Input type="text" field={accentTwo} label="Accent Two Color"/>
                 <button type="submit" className="button-primary" disabled={submitting}>Submit</button>
-                <button type="button" disabled={submitting} onClick={clearTheme}>Clear Theme</button>
+                {name && <button type="button" disabled={submitting} onClick={clearTheme}>Clear Theme</button>}
             </form>
         );
     }
