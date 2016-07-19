@@ -4,7 +4,6 @@ import { Route, IndexRoute } from 'react-router';
 import AppContainer from './views/AppContainer';
 import About from './views/about/About';
 import Blog from './views/blog/Blog';
-import BlogPost from './views/blog/BlogPost';
 import CrankingsContainer from './views/combinedRankings/CrankingsContainer';
 import CrankingsDataImportContainer from './views/combinedRankings/CrankingsDataImportContainer';
 import DidItContainer from './views/didIt/DidItContainer';
@@ -19,7 +18,6 @@ export default [
         <IndexRoute component={About}/>
         <Route key="about" path="about" component={About}/>
         <Route key="blog" path="blog" component={Blog}/>
-        <Route key="blog/:id" path="blog/:id" component={BlogPost}/>
         <Route key="experiment" path="experiment">
             <Route nav="true" key="crankings" path="crankings" component={CrankingsContainer}/>
             <Route key="crankingsData" path="crankingsData" component={CrankingsDataImportContainer}/>
