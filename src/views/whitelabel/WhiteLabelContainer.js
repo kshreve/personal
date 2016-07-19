@@ -1,7 +1,7 @@
 import { reduxForm } from 'redux-form';
 
 import WhiteLabel from './WhiteLabel';
-import { createCustomTheme } from './../../redux/ducks/theme';
+import { createCustomTheme, clearTheme } from './../../redux/ducks/theme';
 import { addAlert } from './../../redux/ducks/alerts';
 
 let formName = 'whiteLabel',
@@ -16,6 +16,7 @@ export default reduxForm({
     }),
     {
         createCustomTheme: createCustomTheme,
-        addAlert:          addAlert
+        addAlert:          addAlert,
+        clearTheme:        clearTheme
     }
 )(WhiteLabel);
