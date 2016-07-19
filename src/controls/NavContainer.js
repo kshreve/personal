@@ -4,7 +4,7 @@ import Nav from './Nav';
 import { toggleItem } from './../redux/ducks/mainNav';
 
 export default connect(
-    (state, ownProps) => ({
+    (state) => ({
         mainNav: state.mainNav
     }),
     { toggleItem: toggleItem }
