@@ -74,7 +74,7 @@
     "kinetic": "^5.2.0",
     "localforage": "^1.4.2",
     "mocha": "2.4.5",
-    "node-sass": "3.7.0",
+    "node-sass": "3.13.1",
     "npm-run-all": "1.8.0",
     "object-assign": "4.1.0",
     "react": "^15.2.1",
