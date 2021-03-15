@@ -64,7 +64,7 @@
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "1.0.1",
-    "file-loader": "0.8.5",
+    "file-loader": "6.2.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.10",
     "gulp-rename": "^1.2.2",
