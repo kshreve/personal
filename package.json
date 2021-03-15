@@ -42,7 +42,7 @@
     "babel-preset-react": "6.5.0",
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-1": "6.5.0",
-    "babel-register": "6.8.0",
+    "babel-register": "6.26.0",
     "body-parser": "^1.15.2",
     "browser-sync": "2.12.5",
     "chai": "3.5.0",
