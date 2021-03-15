@@ -88,7 +88,7 @@
     "redux-persist": "^3.2.2",
     "redux-thunk": "^2.1.0",
     "rimraf": "2.5.2",
-    "route-cache": "^0.2.4",
+    "route-cache": "^0.4.5",
     "sass-loader": "3.2.0",
     "sinon": "1.17.4",
     "sinon-chai": "2.8.0",
