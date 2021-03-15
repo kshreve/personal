@@ -93,7 +93,7 @@
     "sinon": "1.17.4",
     "sinon-chai": "2.8.0",
     "style-loader": "0.13.1",
-    "sudoku": "0.0.2",
+    "sudoku": "0.0.3",
     "webpack": "1.13.0",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.10.0"
