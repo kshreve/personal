@@ -90,7 +90,7 @@
     "rimraf": "2.5.2",
     "route-cache": "^0.2.4",
     "sass-loader": "3.2.0",
-    "sinon": "1.17.4",
+    "sinon": "11.1.2",
     "sinon-chai": "2.8.0",
     "style-loader": "0.13.1",
     "sudoku": "0.0.2",
